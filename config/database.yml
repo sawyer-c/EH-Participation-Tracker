@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  url: postgres://kyrtitglpmatoy:9351f865f1636674fc8dc84a135de2491cfcdca121d0c465fa90d316dc2904fb@ec2-52-87-22-151.compute-1.amazonaws.com:5432/d6t9uf8jsuakvg
+  url: postgres://kuxilxjefiaqqc:1a5c6329e2afde0f8342c603dec10d7c4c0eb17f22b80cbeb44092c1e554919e@ec2-52-73-199-211.compute-1.amazonaws.com:5432/d4gh32uir4qvdc
   adapter: postgresql
   database: bookkeeper_test
