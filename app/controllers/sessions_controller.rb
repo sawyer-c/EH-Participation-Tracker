@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
   def destroy
       session.delete(:user_id)
       puts session[:user_id]  # Nothing gets printed to the console here
-      render json: {isLogin: false}
-      redirect_to '/login'
+      redirect_to '/welcome'
    end 
 
   def create
