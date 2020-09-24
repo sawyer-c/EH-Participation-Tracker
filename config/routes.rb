@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :students
   get 'book/list'
   get 'book/show'
   get 'book/new'
