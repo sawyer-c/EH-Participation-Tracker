@@ -56,5 +56,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'kaminari'
-gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'jquery-datatables'
+gem 'bootstrap-sass', '3.3.6' 
 ruby "2.6.6"

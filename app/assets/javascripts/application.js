@@ -1,7 +1,13 @@
+//= require jquery
+//= require datatables
+//= require dataTables/jquery.dataTables
 //= require rails-ujs
+//= require datatables/dataTables.bootstrap4
 //= require turbolinks
-//= require jquery3
 //= require libraries/headroom
 //= require init
-//= require jquery
-//= require dataTables/jquery.dataTables
+
+
+$(document).ready(function() {
+    $("#dttb").dataTable();
+  });
