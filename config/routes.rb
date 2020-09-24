@@ -6,6 +6,8 @@ Rails.application.routes.draw do
    get 'welcome', to: 'sessions#welcome'
    get 'authorized', to: 'sessions#page_requires_login'
 
+   get '/logout', to: 'sessions#destroy'
+
   get 'book/list'
   get 'book/show'
   get 'book/new'
