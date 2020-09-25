@@ -8,6 +8,6 @@
 //= require init
 
 
-$(document).ready("turbolinks:load", function() {
-    $("#dttb").dataTable();
+$(document).on('turbolinks:load', function() {
+  $("#dttb").dataTable();
   });

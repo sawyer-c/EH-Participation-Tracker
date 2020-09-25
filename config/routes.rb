@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   resources :students
 
+  root "sessions#welcome"
+
 end
