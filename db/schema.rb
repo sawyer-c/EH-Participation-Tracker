@@ -45,4 +45,12 @@ ActiveRecord::Schema.define(version: 20200924165006) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.string "description"
+    t.integer "eventID"
+    t.string "type"
+    t.string "service"
+  end
 end
