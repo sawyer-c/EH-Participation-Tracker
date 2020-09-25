@@ -27,7 +27,7 @@
         <td><%= c.email %></td>
         <td><%= c.gradYear %></td>
         <td><%= c.major%></td>
-        <td><%= c.created_at%></td>
+        <td><%= c.status%></td>
         <td>
           <b> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Edit"></i>'.html_safe, edit_student_path(c)%></b> |
           <b> <%= link_to '<i class="fa fa-trash fa-lg" aria-hidden="true" data-toggle="tooltip" title="Delete"></i>'.html_safe, c,  method: :delete, data: { confirm: 'Are you sure?' } %></b> |
