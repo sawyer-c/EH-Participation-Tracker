@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1>
+
+<br>
+
+<table id="dttb" class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Gradyear</th>
+      <th>Major</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |c| %>
+       <tr>
+        <td><%= c.id %></td>
+        <td><%= c.firstName%></td>
+        <td><%= c.lastName%></td>
+        <td><%= c.email %></td>
+        <td><%= c.gradYear %></td>
+        <td><%= c.major%></td>
+        <td><%= c.created_at%></td>
+        <td>
+          <b> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Edit"></i>'.html_safe, edit_student_path(c)%></b> |
+          <b> <%= link_to '<i class="fa fa-trash fa-lg" aria-hidden="true" data-toggle="tooltip" title="Delete"></i>'.html_safe, c,  method: :delete, data: { confirm: 'Are you sure?' } %></b> |
+          <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, c%></b>
+        </td>
+       </tr>
+       <% end %>
+    <% if @students.blank? %>
+        <tr>
+            <td>There are not any books currently in the system.</td>
+        </tr>
+    <% end %>
+        
+  </tbody>
+</table>
+
+<%= link_to '<span data-toggle="tooltip" title="Add New Book to Collection"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp;Add Student</span>'.html_safe, new_student_path%>
+
+

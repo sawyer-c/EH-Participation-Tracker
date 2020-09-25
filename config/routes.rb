@@ -7,6 +7,7 @@ Rails.application.routes.draw do
    get 'authorized', to: 'sessions#page_requires_login'
 
   delete 'logout'  => 'sessions#destroy'
+  resources :students
 
   get 'book/list'
   get 'book/show'
