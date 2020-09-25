@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   get 'book/edit'
   patch 'book/update'
 
-  get 'subjects/list'
-  get 'subjects/show_subjects'
+  get 'students/list'
+  get 'students/show_students'
 
   root 'book#list'
 
