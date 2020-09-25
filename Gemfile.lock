@@ -41,10 +41,10 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (8.0.0)
-    bcrypt (3.1.16)
-    bcrypt (3.1.16-java)
     autoprefixer-rails (10.0.0.2)
       execjs
+    bcrypt (3.1.16)
+    bcrypt (3.1.16-java)
     bindex (0.8.1)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
