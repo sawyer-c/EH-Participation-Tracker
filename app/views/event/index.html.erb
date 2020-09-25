@@ -1,0 +1,45 @@
+<link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+<p id="notice"><%= notice %></p>
+
+<h1>Events</h1>
+
+<br>
+
+<table id="dttb" class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>EventID</th>
+      <th>EventTypeID</th>
+      <th>Service</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |c| %>
+       <tr>
+        <td><%= c.name %></td>
+        <td><%= c.date%></td>
+        <td><%= c.description%></td>
+        <td><%= c.eventID %></td>
+        <td><%= c.type %></td>
+        <td><%= c.service%></td>
+        <td>
+          <b> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Edit"></i>'.html_safe, edit_event_path(c)%></b> |
+          <b> <%= link_to '<i class="fa fa-trash fa-lg" aria-hidden="true" data-toggle="tooltip" title="Delete"></i>'.html_safe, c,  method: :delete, data: { confirm: 'Are you sure?' } %></b> |
+          <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, c%></b>
+        </td>
+       </tr>
+       <% end %>
+    <% if @events.blank? %>
+        <tr>
+            <td>There are not any events currently in the system.</td>
+        </tr>
+    <% end %>
+        
+  </tbody>
+</table>
+
+<%= link_to '<span data-toggle="tooltip" title="Add New Event to Collection"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp;Add Event</span>'.html_safe, new_event_path%>
+
