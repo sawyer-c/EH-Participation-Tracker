@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   delete 'logout'  => 'sessions#destroy'
   resources :students
-
+  resources :events
   root "sessions#welcome"
 
 end

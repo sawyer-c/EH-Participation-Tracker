@@ -1,7 +1,55 @@
-<h1>Welcome</h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/dark-mode.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Engineering Honors Participation Tracker</title>
+</head>
+
 <% if logged_in? %>
+
     <h1>You are Logged In, <%= current_user.username %></h1>
+
+    <div class="container-fluid text-center">
+      <div class="row content">
+        <div id="leftnav" class="col-sm-2 sidenav">
+          <p><a href="#">Events</a></p>
+          <p><a href="#">Students</a></p>
+          <p><a href="#">Announcements</a></p>
+    </div>
+    <div class="col-sm-8 text-center title">
+          <hr>
+          <h1 id="title">Engineering Honors Participation Tracker</h1>
+          <p></p>
+          <hr>
+        </div>
+        <div id="rightnav" class="col-sm-2 sidenav">
+          <a href="#" class="nav-link">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+              <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
 <% else %>
     <%= button_to "Login", 'sessions/login', method: :get%>
     <%= button_to "Sign Up", 'sessions/users/new', method: :get%>
 <% end %>
+
+<script src="js/dark.js"></script>
+<script src="js/dark-mode-switch.min.js"></script>
+
+
+
+
+
+
+  <body>
+
+    
