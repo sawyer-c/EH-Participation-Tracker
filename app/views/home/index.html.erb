@@ -1,6 +1,6 @@
 <h1>Welcome</h1>
 <% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.username %></h1>
+    <h1>Welcome back, <%= current_user.username %>!</h1>
 <% else %>
     <%= button_to "Login", 'sessions/login', method: :get%>
     <%= button_to "Sign Up", 'sessions/users/new', method: :get%>
