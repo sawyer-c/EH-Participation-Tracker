@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 20200924165006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "books", force: :cascade do |t|
-    t.string "title", limit: 32, null: false
-    t.float "price"
-    t.integer "subject_id"
-    t.string "author"
-    t.datetime "created_at"
-  end
-
   create_table "students", force: :cascade do |t|
     t.string "firstName"
     t.string "lastName"
@@ -32,10 +24,6 @@ ActiveRecord::Schema.define(version: 20200924165006) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "subjects", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
