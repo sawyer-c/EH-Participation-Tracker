@@ -20,7 +20,8 @@ gem 'uglifier', '>= 1.3.0'
 
 # use jquery
 gem 'jquery-rails', '~> 4.3', '>= 4.3'
-
+# used for importing, and exporting excel files
+gem 'rubyXL'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
