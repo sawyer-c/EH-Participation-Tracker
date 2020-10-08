@@ -4,8 +4,10 @@
 //= require rails-ujs
 //= require datatables/dataTables.bootstrap4
 //= require turbolinks
+//= require bootstrap
 //= require libraries/headroom
 //= require init
+//= require_tree
 
 
 $(document).on('turbolinks:load', function() {

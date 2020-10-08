@@ -1,8 +1,16 @@
 <% if logged_in? %>
     <h1>Welcome back, <%= current_user.username %>!</h1>
-    <h1>Yuh</h1>
 <% else %>
     <h1>Please sign-in to continue!</h1>
     <%= button_to "Login", '/login', method: :get%>
     <%= button_to "Sign Up", '/users/new', method: :get%>
 <% end %>
+
+	<div class="col-sm-12 text-center title">
+	  <hr>
+		<h1 id="title">Engineering Honors Participation Tracker</h1>
+	  <p></p>
+	  <hr>
+	</div>
+		
+    
