@@ -2,8 +2,8 @@
     <h1>Welcome back, <%= current_user.username %>!</h1>
 <% else %>
     <h1>Please sign-in to continue!</h1>
-    <%= button_to "Login", '/login', method: :get%>
-    <%= button_to "Sign Up", '/users/new', method: :get%>
+    <button class="btn btn-primary"><%= link_to "Login", '/login', method: :get%></button>
+    <button class="btn btn-primary"> <%= link_to "Sign Up", '/users/new', method: :get%> </button>
 <% end %>
 
 <div class="col-sm-12 text-center title">
@@ -12,3 +12,10 @@
 	<p></p>
   <hr>
 </div>
+
+
+<style>
+  a {
+    color: #fff !important;
+  }
+</style>
