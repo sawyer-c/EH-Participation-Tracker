@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20201009030923) do
     t.string "firstName"
     t.string "lastName"
     t.string "email"
-    t.integer "uin"
     t.integer "gradYear"
     t.string "major"
     t.string "status"
