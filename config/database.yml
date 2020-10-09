@@ -27,7 +27,7 @@ default: &default
 development:
   <<: *default
   adapter: postgresql
-  database: bookkeeper_development
+  database: ehparticipationtracker_production
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -61,7 +61,7 @@ development:
 test:
   <<: *default
   adapter: postgresql
-  database: bookkeeper_test
+  database: ehparticipationtracker_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -86,4 +86,4 @@ production:
   <<: *default
   url: postgres://kuxilxjefiaqqc:1a5c6329e2afde0f8342c603dec10d7c4c0eb17f22b80cbeb44092c1e554919e@ec2-52-73-199-211.compute-1.amazonaws.com:5432/d4gh32uir4qvdc
   adapter: postgresql
-  database: bookkeeper_test
+  database: ehparticipationtracker_test
