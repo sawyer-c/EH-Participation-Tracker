@@ -6,7 +6,7 @@
 //= require turbolinks
 //= require libraries/headroom
 //= require init
-
+//= require_tree
 
 $(document).on('turbolinks:load', function() {
   $("#dttb").dataTable();
