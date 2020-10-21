@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
-    namespace :v1 do
-      resources :students do
-        resources :events
-      end
-    end
-  end
-  
+
   resources :users, only: [:new, :create]
    get 'login', to: 'sessions#new'
    post 'login', to: 'sessions#create'
@@ -17,5 +10,12 @@ Rails.application.routes.draw do
   resources :students
   resources :events
   root "sessions#welcome"
+
+  namespace :api do
+    namespace :v1 do
+      resources :students, param: :uin
+      resources :events, param: :eventID
+    end
+  end
 
 end

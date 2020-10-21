@@ -1,69 +1,53 @@
-class Api::V1::EventsController < ApplicationController
-    before_action :set_event, only: [:show, :edit, :update, :destroy]
+module Api
+    module V1
+        class EventsController < ApplicationController
+            def index
+                students = Event.all
 
-	# GET /events
-	# GET /events.json
-	def index
-      @events = Event.page(params[:page])
-      render json: @events
-	end
-  
-	# GET /events/1
-	# GET /events/1.json
-    def show
-        render json: @event
-	end
-  
-	# GET /events/new
-	def new
-	  @event = Event.new
-	end
-  
-	# GET /events/1/edit
-	def edit
-	end
-  
-	# POST /events
-	# POST /events.json
-	def create
-	  @event = Event.new(event_params)
-  
-		if @event.save
-		  render json: @event
-		else
-		  render error: {error: "unable to create event"}, status 400
-		end
-	end
-  
-	# PATCH/PUT /events/1
-	# PATCH/PUT /events/1.json
-	def update
-		if @event.update(event_params)
-		  render json: {message:"event updated successfully"}, status 200
-		else
-            render json: {error:"Unable to update event"}, status 400
-		end
-	end
-  
-	# DELETE /events/1
-	# DELETE /events/1.json
-    def destroy
-        if @event
-            @event.destroy
-            render json: {message:"event destroyed successfully"}, status 200
-        else
-            render json: {error:"Unable to destroy event"}, status 400
-	    end
-	end
-  
-	private
-	  # Use callbacks to share common setup or constraints between actions.
-	  def set_event
-		@event = Event.find(params[:id])
-	  end
-  
-	  # Only allow a list of trusted parameters through.
-	    def event_params
-	        params.require(:event).permit(:name, :date, :description, :eventID, :type, :service)
+                render json: EventSerializer.new(student).serialized_json
+            end
+
+            def show
+                student = Event.find_by(eventID: params[:eventID])
+
+                render json: EventSerializer.new(student).serialized_json
+            end
+
+            def create
+                student = Event.new(student_params)
+
+                if student.save
+                    render json: EventSerializer.new(student).serialized_json
+                else 
+                    render json: {error: student.errors.messages}, status: 422
+                end
+            end
+
+            def update
+                student = Event.find_by(eventID: params[:eventID])
+
+                if student.update(student_params)
+                    render json: EventSerializer.new(student).serialized_json
+                else 
+                    render json: {error: student.errors.messages}, status: 422
+                end
+            end
+
+            def destroy
+
+                if student.destroy
+                    head :no_content
+                else 
+                    render json: {error: student.errors.messages}, status: 422
+                end
+            end
+
+
+            private
+
+            def student_params
+                params.require(:student).permit(:name, :date, :description, :type, :eventID, :service)
+            end
         end
+    end
 end
