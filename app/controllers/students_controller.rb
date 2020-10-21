@@ -61,6 +61,32 @@ class StudentsController < ApplicationController
     end
   end
 
+
+  # Import From CSV
+  def import
+    require 'csv'
+    puts "Enter the filename"
+    fileName = gets
+    csv_text = File.read(fileName)
+    csv = CSV.parse(csv_text, :headers=> true)
+    csv.each do |row|
+      Student.create!(row.to_hash)
+    end
+  end
+
+  # Export to CSV
+  def export
+    require 'csv'
+    file "#{Rails.root}/public/student_data.csv"
+    students = Student.order(:uin)
+    headers = ["First Name", "Last Name", "Email", "UIN", "Graduation Year", "Major", "Status"]
+    CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
+      students.each do |student|
+        writer << [student.firstName, student.lastName, student.email, student.uin, student.gradYear, student.major, student.status]
+      end
+    end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
