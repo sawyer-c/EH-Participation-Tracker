@@ -63,11 +63,13 @@ class StudentsController < ApplicationController
 
 
   # Import From CSV
-  def import(file)
-    require 'csv'
-    CSV.foreach(file.path, headers: true) do |row|
-      Student.create!(row.to_hash)
-    end
+  def import
+    #require 'csv'
+    #CSV.foreach(file.path, headers: true) do |row|
+      #Student.create!(row.to_hash)
+    #end
+    Student.import(params[:file])
+    redirect_to root_url, notice: "Student Data Imported"
   end
 
   # Export to CSV
