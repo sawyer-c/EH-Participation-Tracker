@@ -63,13 +63,9 @@ class StudentsController < ApplicationController
 
 
   # Import From CSV
-  def import
+  def import(file)
     require 'csv'
-    puts "Enter the filename"
-    fileName = gets
-    csv_text = File.read(fileName)
-    csv = CSV.parse(csv_text, :headers=> true)
-    csv.each do |row|
+    CSV.foreach(file.path, headers: true) do |row|
       Student.create!(row.to_hash)
     end
   end
