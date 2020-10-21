@@ -43,3 +43,8 @@
 </table>
 
 <%= link_to '<span data-toggle="tooltip" title="Add New Student"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp;Add Student</span>'.html_safe, new_student_path%>
+
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <% submit_tag "Import CSV" %>
+<% end %>

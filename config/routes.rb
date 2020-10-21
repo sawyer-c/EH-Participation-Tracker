@@ -7,7 +7,12 @@ Rails.application.routes.draw do
    get 'authorized', to: 'sessions#page_requires_login'
 
   delete 'logout'  => 'sessions#destroy'
-  resources :students
+  resources :students do 
+    collection {post: import}
+  end
+
+  root to: "students#index"
+
   resources :events
   root "sessions#welcome"
 

@@ -64,14 +64,18 @@ class StudentsController < ApplicationController
 
   # Import From CSV
   def import
-    require 'csv'
-    puts "Enter the filename"
-    fileName = gets
-    csv_text = File.read(fileName)
-    csv = CSV.parse(csv_text, :headers=> true)
-    csv.each do |row|
-      Student.create!(row.to_hash)
-    end
+    #require 'csv'
+    #puts "Enter the filename"
+    #fileName = gets
+    #csv_text = File.read(fileName)
+    #csv = CSV.parse(csv_text, :headers=> true)
+    #csv.each do |row|
+      #Student.create!(row.to_hash)
+    #end
+
+    Student.import(params[:file])
+      redirect_to root_url, notice: "Student Data Imported"
+
   end
 
   # Export to CSV
