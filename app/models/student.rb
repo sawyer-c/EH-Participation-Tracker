@@ -6,7 +6,6 @@ class Student < ApplicationRecord
             Student.create! row.to.hash
         end
     end
-
     validates :firstName, presence: true
     validates :lastName, presence: true
     validates :email, presence: true

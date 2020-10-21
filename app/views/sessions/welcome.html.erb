@@ -1,7 +1,22 @@
+
+<div class="col-sm-12 text-center title">
+<hr>
+<h1 id="title">Engineering Honors Participation Tracker</h1>
+<p></p>
+<hr>
+</div>
+
 <% if logged_in? %>
     <h1>Welcome back, <%= current_user.username %>!</h1>
 <% else %>
     <h1>Please sign-in to continue!</h1>
-    <%= button_to "Login", '/login', method: :get%>
-    <%= button_to "Sign Up", '/users/new', method: :get%>
+    <button class="btn btn-primary"><%= link_to "Login", '/login', method: :get%></button>
+    <button class="btn btn-primary"> <%= link_to "Sign Up", '/users/new', method: :get%> </button>
 <% end %>
+
+
+<style>
+  a {
+    color: #fff !important;
+  }
+</style>
