@@ -83,11 +83,12 @@ class StudentsController < ApplicationController
       #writer << [student.firstName, student.lastName, student.email, student.uin, student.gradYear, student.major, student.status]
     #end
     #end
+    #filename: "Students-#{Date.today}.csv"
     @students = Student.all
 
     respond_to do |format|
       format.html
-      format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv" disposition: :inline}
+      format.csv {send_data @students.to_csv,  disposition: :inline}
     end
 
   end
