@@ -80,7 +80,7 @@ class StudentsController < ApplicationController
     #headers = ["First Name", "Last Name", "Email", "UIN", "Graduation Year", "Major", "Status"]
     #CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
       #students.each do |student|
-        #writer << [student.firstName, student.lastName, student.email, student.uin, student.gradYear, student.major, student.status]
+      #writer << [student.firstName, student.lastName, student.email, student.uin, student.gradYear, student.major, student.status]
      # end
     #end
     @students = Student.all
