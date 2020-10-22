@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   resources :students do
     collection {post :import}
+    collection {post :export}
   end
   resources :events
   root "sessions#welcome"

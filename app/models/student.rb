@@ -6,6 +6,19 @@ class Student < ApplicationRecord
             Student.create! row.to.hash
         end
     end
+
+    def self.export
+        attributes = %w{uin, firstName, lastName, email, gradYear, major, status}
+
+        CSV.generate(headers: true) do |csv|
+            csv << attributes
+
+            all.each do |sutdent|
+                csv << attributes.map{ |attr| student.send(attr)}
+            end
+        end
+    end
+        
     validates :firstName, presence: true
     validates :lastName, presence: true
     validates :email, presence: true
