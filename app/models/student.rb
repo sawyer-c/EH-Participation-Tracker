@@ -8,12 +8,12 @@ class Student < ApplicationRecord
     end
 
     def self.export
-        attributes = %w{uin, firstName, lastName, email, gradYear, major, status}
+        attributes = %w{firstName, lastName, email, uin, gradYear, major, status}
 
         CSV.generate(headers: true) do |csv|
             csv << attributes
 
-            all.each do |sutdent|
+            all.each do |student|
                 csv << attributes.map{ |attr| student.send(attr)}
             end
         end
