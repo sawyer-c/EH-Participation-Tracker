@@ -3,17 +3,17 @@ class Student < ApplicationRecord
 
     def self.import(file)
         CSV.foreach(file.path, headers: true) do |row|
-            Student.create! row.to.hash
+            Student.create! row.to_hash
         end
     end
 
-    def self.export
-        attributes = %w{uin, firstName, lastName, email, gradYear, major, status}
+    def self.to_csv
+        attributes = %w{firstName, lastName, email, uin, gradYear, major, status}
 
         CSV.generate(headers: true) do |csv|
             csv << attributes
 
-            all.each do |sutdent|
+            all.each do |student|
                 csv << attributes.map{ |attr| student.send(attr)}
             end
         end

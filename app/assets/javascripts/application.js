@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery_ujs
 //= require datatables
 //= require dataTables/jquery.dataTables
 //= require rails-ujs
