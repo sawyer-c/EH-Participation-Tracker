@@ -89,7 +89,6 @@ class StudentsController < ApplicationController
       #format.html
       #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv" disposition: :inline}
     #end
-
   end
 
 
@@ -103,4 +102,5 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:firstName, :lastName, :email, :uin, :gradYear, :major, :status)
     end
+  end
 end
