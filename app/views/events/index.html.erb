@@ -11,9 +11,7 @@
       <th>Name</th>
       <th>Date</th>
       <th>Description</th>
-      <th>EventID</th>
       <th>EventTypeID</th>
-      <th>Service</th>
     </tr>
   </thead>
   <tbody>
@@ -22,9 +20,7 @@
         <td><%= c.name %></td>
         <td><%= c.date%></td>
         <td><%= c.description%></td>
-        <td><%= c.eventID %></td>
         <td><%= c.type %></td>
-        <td><%= c.service%></td>
         <td>
           <b> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Edit"></i>'.html_safe, edit_event_path(c)%></b> |
           <b> <%= link_to '<i class="fa fa-trash fa-lg" aria-hidden="true" data-toggle="tooltip" title="Delete"></i>'.html_safe, c,  method: :delete, data: { confirm: 'Are you sure?' } %></b> |
