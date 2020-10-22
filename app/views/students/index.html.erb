@@ -12,6 +12,7 @@
       <th>Firstname</th>
       <th>Lastname</th>
       <th>Email</th>
+      <th>UIN</th>
       <th>Class Year</th>
       <th>Major</th>
       <th>Status</th>
@@ -24,6 +25,7 @@
         <td><%= c.firstName%></td>
         <td><%= c.lastName%></td>
         <td><%= c.email %></td>
+        <td><%= c.uin %></td>
         <td><%= c.gradYear %></td>
         <td><%= c.major%></td>
         <td><%= c.status%></td>
@@ -45,4 +47,11 @@
 
 <%= link_to '<span data-toggle="tooltip" title="Add New Student"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp;Add Student</span>'.html_safe, new_student_path%>
 
+<%= form_tag import_students_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>
 
+<%= form_tag export_students_path, multipart: true do %>
+  <%= submit_tag "Export to CSV" %>
+<% end %>

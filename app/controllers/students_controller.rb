@@ -61,6 +61,38 @@ class StudentsController < ApplicationController
     end
   end
 
+
+  # Import From CSV
+  def import
+    #require 'csv'
+    #CSV.foreach(file.path, headers: true) do |row|
+      #Student.create!(row.to_hash)
+    #end
+    Student.import(params[:file])
+    redirect_to root_url, notice: "Student Data Imported"
+  end
+
+  # Export to CSV
+  def export
+    #require 'csv'
+    #file "#{Rails.root}/public/student_data.csv"
+    #students = Student.order(:uin)
+    #headers = ["First Name", "Last Name", "Email", "UIN", "Graduation Year", "Major", "Status"]
+    #CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
+      #students.each do |student|
+      #writer << [student.firstName, student.lastName, student.email, student.uin, student.gradYear, student.major, student.status]
+     # end
+    #end
+    @students = Student.all
+
+    respond_to do |format|
+      format.html
+      format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
+    end
+
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
@@ -69,6 +101,6 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:firstName, :lastName, :email, :gradYear, :major, :status)
+      params.require(:student).permit(:firstName, :lastName, :email, :uin, :gradYear, :major, :status)
     end
 end
