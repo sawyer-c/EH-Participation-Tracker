@@ -10,18 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201009030923) do
+ActiveRecord::Schema.define(version: 20201007010343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "books", force: :cascade do |t|
-    t.string "title", limit: 32, null: false
-    t.float "price"
-    t.integer "subject_id"
-    t.string "author"
-    t.datetime "created_at"
-  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -38,6 +30,7 @@ ActiveRecord::Schema.define(version: 20201009030923) do
     t.string "firstName"
     t.string "lastName"
     t.string "email"
+    t.integer "uin"
     t.integer "gradYear"
     t.string "major"
     t.string "status"
@@ -45,15 +38,12 @@ ActiveRecord::Schema.define(version: 20201009030923) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "subjects", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "users", force: :cascade do |t|
-    t.string "username"
+    t.string "username", null: false
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

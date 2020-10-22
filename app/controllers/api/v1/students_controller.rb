@@ -1,6 +1,8 @@
 module Api
     module V1
         class StudentsController < ApplicationController
+            protect_from_forgery with: :null_session
+           
             def index
                 students = Student.all
 
