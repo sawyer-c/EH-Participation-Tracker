@@ -90,7 +90,7 @@ class StudentsController < ApplicationController
       #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv" disposition: :inline}
     #end
   end
-
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -102,4 +102,3 @@ class StudentsController < ApplicationController
     def student_params
       params.require(:student).permit(:firstName, :lastName, :email, :uin, :gradYear, :major, :status)
     end
-end
