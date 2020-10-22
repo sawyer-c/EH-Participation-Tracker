@@ -8,7 +8,7 @@ class Student < ApplicationRecord
     end
 
     def self.to_csv
-        attributes = %w{firstName, lastName, email, uin, gradYear, major, status}
+        attributes = %w{firstName, lastName, email, uin, year, major, gpa, status}
 
         CSV.generate(headers: true) do |csv|
             csv << attributes
@@ -23,8 +23,9 @@ class Student < ApplicationRecord
     validates :lastName, presence: true
     validates :email, presence: true
     validates :uin, presence: true
-    validates :gradYear, presence: true
+    validates :year, presence: true
     validates :major, presence: true
+    validates :gpa, presence: true
     validates :status, presence: true
 
     STANDING_LIST = ["Good Standing", "Bad Standing"]

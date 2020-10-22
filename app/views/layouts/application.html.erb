@@ -15,7 +15,7 @@
 
   <style>
 
-  [data-theme="light"] {
+  :root {
     --background-color: #dddddd;
     --text-color: #333333;
     --nav-color: #500000;
@@ -114,6 +114,10 @@
     position: absolute;
     bottom: 4px;
     right: 4px;
+  }
+	  
+  #event_name, #event_date, #event_description, #event_type, #location, input[type="submit"], #student_firstName, #student_lastName, #student_email, #student_uin, #student_gradYear, #student_major, option[value="Good Standing"], option[value="Bad Standing"], select[name="student[status]"], input[type="text"], .modal-body {
+    color: black;
   }
 
   /* On small screens, set height to 'auto' for sidenav and grid */
