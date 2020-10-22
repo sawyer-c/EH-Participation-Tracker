@@ -30,4 +30,5 @@ class Student < ApplicationRecord
     STANDING_LIST = ["Good Standing", "Bad Standing"]
 
     has_one :user, :class_name => 'User', :foreign_key => 'username'
+    has_and_belongs_to_many :events
 end
