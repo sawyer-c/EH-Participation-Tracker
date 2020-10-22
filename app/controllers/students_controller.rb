@@ -77,17 +77,17 @@ class StudentsController < ApplicationController
     #require 'csv'
     #file "#{Rails.root}/public/student_data.csv"
     #students = Student.order(:uin)
-    #headers = ["First Name", "Last Name", "Email", "UIN", "Graduation Year", "Major", "Status"]
+    #headers = ["firstName", "lastName", "email", "uin", "gradYear", "major", "status"]
     #CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
       #students.each do |student|
       #writer << [student.firstName, student.lastName, student.email, student.uin, student.gradYear, student.major, student.status]
-     # end
+    #end
     #end
     @students = Student.all
 
     respond_to do |format|
       format.html
-      format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
+      format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv" disposition: :inline}
     end
 
   end
