@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.text_field :date, id: :event_date %>
+    <%= form.datetime_field :date, id: :event_date %>
   </div>
 
   <div class="field">
@@ -29,6 +29,11 @@
   <div class="field">
     <%= form.label :event_type %>
     <%= form.text_field :event_type, id: :event_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :location %>
   </div>
 
   <div class="actions">

@@ -17,7 +17,12 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @event.type %>
+  <%= @event.event_type %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @event.location %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
