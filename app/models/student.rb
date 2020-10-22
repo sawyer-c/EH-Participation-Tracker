@@ -7,7 +7,7 @@ class Student < ApplicationRecord
         end
     end
 
-    def self.export
+    def self.to_csv
         attributes = %w{firstName, lastName, email, uin, gradYear, major, status}
 
         CSV.generate(headers: true) do |csv|
