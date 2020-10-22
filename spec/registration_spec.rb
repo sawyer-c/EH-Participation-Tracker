@@ -8,7 +8,7 @@ RSpec.describe 'Registering User', type: :feature do
     scenario 'Signup with valid input' do
         visit welcome_path
         expect(page).to have_content("Please sign-in to continue!")
-        click_on 'Sign Up'
+        click_button 'Sign Up'
         fill_in 'Username', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Create User'
@@ -32,7 +32,7 @@ RSpec.describe 'Logging in User', type: :feature do
     scenario 'Login with existing user' do
         visit welcome_path
         expect(page).to have_content("Please sign-in to continue!")
-        click_on 'Sign Up'
+        click_button 'Sign Up'
         fill_in 'Username', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Create User'
@@ -44,7 +44,7 @@ RSpec.describe 'Logging in User', type: :feature do
             find('a', text: 'Log out').click()
         end
 
-        click_on 'Login'
+        click_button_on 'Login'
         fill_in 'Username', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Login'
@@ -53,7 +53,7 @@ RSpec.describe 'Logging in User', type: :feature do
 
     scenario 'Login with unregistered user' do
         visit welcome_path
-        click_on 'Login'
+        click_button 'Login'
         fill_in 'Username', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Login'

@@ -80,7 +80,7 @@ class StudentsController < ApplicationController
     headers = ["firstName", "lastName", "email", "uin", "gradYear", "major", "status"]
     CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
       students.each do |student|
-        writer << [student.firstName, student.lastName, student.email, student.uin, student.gradYear, student.major, student.status]
+        writer << [student.firstName, student.lastName, student.email, student.uin, student.year, student.major, student.gpa, student.status]
       end
     end
     #@students = Student.all
@@ -99,6 +99,6 @@ class StudentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_params
-      params.require(:student).permit(:firstName, :lastName, :email, :uin, :gradYear, :major, :status)
+      params.require(:student).permit(:firstName, :lastName, :email, :uin, :year, :major, :gpa, :status)
     end    
 end
