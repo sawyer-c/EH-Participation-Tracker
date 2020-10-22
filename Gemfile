@@ -38,6 +38,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'fast_jsonapi'
 
+gem 'jwt'
+
+gem 'simple_command'
+
 group :development, :test do
   gem "rspec-rails"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
