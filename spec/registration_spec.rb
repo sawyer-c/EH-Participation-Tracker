@@ -44,7 +44,7 @@ RSpec.describe 'Logging in User', type: :feature do
             find('a', text: 'Log out').click()
         end
 
-        click_button_on 'Login'
+        click_button 'Login'
         fill_in 'Username', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Login'

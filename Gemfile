@@ -68,3 +68,4 @@ gem 'jquery-datatables'
 gem 'bootstrap-sass', '3.3.6' 
 ruby "2.6.6"
 gem "brakeman"
+gem 'simplecov', require: false, group: :test

@@ -48,7 +48,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.select(:status, Student::STANDING_LIST, id: :student_status) %>
+    <%= form.select(:status, Student::STANDING_LIST, :class => "student_status") %>
   </div>
 
   <div class="actions">
