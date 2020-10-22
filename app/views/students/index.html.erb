@@ -49,5 +49,9 @@
 
 <%= form_tag import_students_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <% submit_tag "Import CSV" %>
+  <%= form.submit>
+<% end %>
+
+<%= form_tag export_students_path, multipart: true do %>
+  <%= form.submit>
 <% end %>
