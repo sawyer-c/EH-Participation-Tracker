@@ -75,7 +75,7 @@ class StudentsController < ApplicationController
   # Export to CSV
   def export
     require 'csv'
-    file "#{Rails.root}/public/student_data.csv"
+    file = "#{Rails.root}/public/student_data.csv"
     students = Student.order(:uin)
     headers = ["firstName", "lastName", "email", "uin", "gradYear", "major", "status"]
     CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
