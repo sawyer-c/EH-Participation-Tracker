@@ -90,9 +90,7 @@ class StudentsController < ApplicationController
       format.html
       format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv" disposition: :inline}
     end
-
     redirect_to root_url, notice: "Student Data Exported"
-    
   end
 
   private
