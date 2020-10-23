@@ -23,8 +23,9 @@ class Student < ApplicationRecord
     validates :lastName, presence: true
     validates :email, presence: true
     validates :uin, presence: true
-    validates :gradYear, presence: true
+    validates :year, presence: true
     validates :major, presence: true
+    validates :gpa, presence: true
     validates :status, presence: true
 
     STANDING_LIST = ["Good Standing", "Bad Standing"]

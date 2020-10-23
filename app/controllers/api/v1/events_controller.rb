@@ -4,51 +4,51 @@ module Api
             protect_from_forgery with: :null_session
 
             def index
-                students = Event.all
+                events = Event.all
 
-                render json: EventSerializer.new(student).serialized_json
+                render json: EventSerializer.new(event).serialized_json
             end
 
             def show
-                student = Event.find_by(eventID: params[:eventID])
+                event = Event.find(params[:id])
 
-                render json: EventSerializer.new(student).serialized_json
+                render json: EventSerializer.new(event).serialized_json
             end
 
             def create
-                student = Event.new(student_params)
+                event = Event.new(event_params)
 
-                if student.save
-                    render json: EventSerializer.new(student).serialized_json
+                if event.save
+                    render json: EventSerializer.new(event).serialized_json
                 else 
-                    render json: {error: student.errors.messages}, status: 422
+                    render json: {error: event.errors.messages}, status: 422
                 end
             end
 
             def update
-                student = Event.find_by(eventID: params[:eventID])
+                event = Event.find(params[:id])
 
-                if student.update(student_params)
-                    render json: EventSerializer.new(student).serialized_json
+                if event.update(event_params)
+                    render json: EventSerializer.new(event).serialized_json
                 else 
-                    render json: {error: student.errors.messages}, status: 422
+                    render json: {error: event.errors.messages}, status: 422
                 end
             end
 
             def destroy
 
-                if student.destroy
+                if event.destroy
                     head :no_content
                 else 
-                    render json: {error: student.errors.messages}, status: 422
+                    render json: {error: event.errors.messages}, status: 422
                 end
             end
 
 
             private
 
-            def student_params
-                params.require(:student).permit(:name, :date, :description, :type, :eventID, :service)
+            def event_params
+                params.require(:event).permit(:name, :date, :description, :event_type, :location)
             end
         end
     end
