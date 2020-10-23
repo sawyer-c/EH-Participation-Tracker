@@ -83,6 +83,8 @@ class StudentsController < ApplicationController
         writer << [student.firstName, student.lastName, student.email, student.uin, student.year, student.major, student.gpa, student.status]
       end
     end
+
+    redirect_to root_url, notice: "Student Data Exported"
     #@students = Student.all
 
     #respond_to do |format|
