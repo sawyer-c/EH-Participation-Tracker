@@ -77,7 +77,7 @@ class StudentsController < ApplicationController
     require 'csv'
     file = "#{Rails.root}/public/student_data.csv"
     students = Student.order(:uin)
-    headers = ["firstName", "lastName", "email", "uin", "gradYear", "major", "status"]
+    headers = ["firstName", "lastName", "email", "uin", "year", "major", "gpa",  "status"]
     CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
       students.each do |student|
         writer << [student.firstName, student.lastName, student.email, student.uin, student.year, student.major, student.gpa, student.status]
