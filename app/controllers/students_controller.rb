@@ -76,7 +76,7 @@ class StudentsController < ApplicationController
   end
 
   # Export to CSV
-  def export
+  #def export
     #require 'csv'
     #file = "#{Rails.root}/public/student_data.csv"
     #students = Student.order(:uin)
@@ -104,7 +104,7 @@ class StudentsController < ApplicationController
 
     #send_file(file)
     #redirect_to root_url, notice: "Student Data Exported"
-  end
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
