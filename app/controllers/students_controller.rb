@@ -84,7 +84,7 @@ class StudentsController < ApplicationController
       #end
     #end
 
-    @students = Student.all
+    students = Student.all;0
 
     #respond_to do |format|
       #format.html
