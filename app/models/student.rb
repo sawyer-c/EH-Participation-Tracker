@@ -12,9 +12,8 @@ class Student < ApplicationRecord
 
         CSV.generate(headers: true) do |csv|
             csv << attributes
-
             all.each do |student|
-                csv << attributes.map{ |attr| student.send(attr)}
+                csv << [student.firstName, student.lastName, student.email, student.uin, student.year, student.major, student.gpa, student.status]
             end
         end
     end

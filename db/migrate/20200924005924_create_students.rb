@@ -7,8 +7,8 @@ class CreateStudents < ActiveRecord::Migration[5.1]
       t.string :email
       t.integer :uin
       t.integer :year
-      t.float :gpa
       t.string :major
+      t.float :gpa
       t.string :status
 
       t.timestamps

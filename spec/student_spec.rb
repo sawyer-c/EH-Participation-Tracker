@@ -95,3 +95,20 @@ RSpec.describe 'Deleting a student', type: :feature do
     end
 end
 
+RSpec.describe 'Viewing a student', type: :feature do
+  scenario 'success' do
+    visit welcome_path
+    expect(page).to have_content("Please sign-in to continue!")
+    click_button 'Sign Up'
+    fill_in 'Username', with: 'test1233'
+    fill_in 'Password', with: 'test1233'
+    click_on 'Create User'
+
+    newB = Student.create!(firstName: 'Magic', lastName:'Phil', email:'Nice', gpa: 2.1, status: "Bad Standing", uin:123213, year:2001, major:'CSCE')
+    visit students_path
+    find(:xpath, ".//a[i[contains(@class, 'fa fa-search fa-lg')]]").click
+    expect(page).to have_content('Firstname: Magic')
+    sleep(3)
+  end
+end
+

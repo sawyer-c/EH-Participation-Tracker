@@ -5,6 +5,10 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.csv {send_data @students.to_csv}
+    end
   end
 
   # GET /students/1
@@ -85,11 +89,23 @@ class StudentsController < ApplicationController
     end
     #@students = Student.all
 
+
     #respond_to do |format|
       #format.html
-      #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv" disposition: :inline}
+      #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
     #end
-  end
+    #headers = "firstName,lastName,email,uin,year,major,gpa,status"
+    #File.open(file, 'w') do |writer|
+      #writer << headers
+      #students.each do |student|
+        #writer << [student.firstName, student.lastName, student.email, student.year, student.major, student.gpa, student.status]
+        #writer << "\n"  
+      #end
+    #end
+
+    #send_file(file)
+    #redirect_to root_url, notice: "Student Data Exported"
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
