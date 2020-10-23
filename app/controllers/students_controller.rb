@@ -75,7 +75,7 @@ class StudentsController < ApplicationController
   # Export to CSV
   def export
     require 'csv'
-    #file = "#{Rails.root}/public/student_data.csv"
+    file = "#{Rails.root}/public/student_data.csv"
     #students = Student.order(:uin)
     #headers = ["firstName", "lastName", "email", "uin", "year", "major", "gpa",  "status"]
     #CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
@@ -84,11 +84,18 @@ class StudentsController < ApplicationController
       #end
     #end
 
-    @students = Student.all
+    #@students = Student.all
 
-    respond_to do |format|
-      format.html
-      format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
+    #respond_to do |format|
+      #format.html
+      #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
+    #end
+    table = Student.all;0
+    CSV.open(file, w) do |writer|
+      writer << table.first.attributes.map {|a,v| a}
+      table.each do |s|
+        writer << s.attributes.map {|a,v| v}
+      end
     end
     redirect_to root_url, notice: "Student Data Exported"
   end
