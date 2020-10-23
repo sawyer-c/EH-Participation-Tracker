@@ -8,12 +8,102 @@
 
 <% if logged_in? %>
     <h1>Welcome back, <%= current_user.username %>!</h1>
+    
+    <% if current_user.student.blank? %>
+      <% current_user.create_student(firstName: "enter first name", lastName: "enter last name", email: "email", uin: "101010101", year: "2020", major:"major", gpa:"4.0", status: "Good Standing") %>
+    <% end %>
+    
+    <% if false %>
+    #<%# if current_user.student.events = nil? %>
+     # <%# current_user.student.event.create() %>
+    #<%# end %>
+    <% end %>
+
+    <table id="dttb" class="table">
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>UIN</th>
+      <th>Class Year</th>
+      <th>Major</th>
+      <th>GPA</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if current_user.student.blank? %>
+        <tr>
+            <td>No student attached to user.</td>
+        </tr>
+    <% else %>
+       <tr>
+        <td><%= current_user.student.firstName%></td>
+        <td><%= current_user.student.lastName%></td>
+        <td><%= current_user.student.email %></td>
+        <td><%= current_user.student.uin %></td>
+        <td><%= current_user.student.year %></td>
+        <td><%= current_user.student.major%></td>
+        <td><%= current_user.student.gpa%></td>
+        <td><%= current_user.student.status%></td>
+        <td>
+          <b> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Edit"></i>'.html_safe, edit_student_path(current_user.student)%></b> |
+          <b> <%= link_to '<i class="fa fa-trash fa-lg" aria-hidden="true" data-toggle="tooltip" title="Delete"></i>'.html_safe, current_user.student,  method: :delete, data: { confirm: 'Are you sure?' } %></b> |
+          <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, current_user.student%></b>
+        </td>
+       </tr>
+       <% end %>
+  </tbody>
+</table>
+
+
+
+<table id="dttb" class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>EventType</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if false %>
+    <% current_user.student.events.each do |c| %>
+       <tr>
+        <td><%= c.name %></td>
+        <td><%= c.date%></td>
+        <td><%= c.description%></td>
+        <td><%= c.event_type %></td>
+        <td><%= c.location %></td>
+        <td>
+          <b> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Edit"></i>'.html_safe, edit_event_path(c)%></b> |
+          <b> <%= link_to '<i class="fa fa-trash fa-lg" aria-hidden="true" data-toggle="tooltip" title="Delete"></i>'.html_safe, c,  method: :delete, data: { confirm: 'Are you sure?' } %></b> |
+          <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, c%></b>
+        </td>
+       </tr>
+       <% end %>
+       <% end %>
+    <%# if current_user.student.events.blank? #%>
+        <tr>
+            <td>There are not any events associated.</td>
+        </tr>
+    <%# end #%>
+        
+  </tbody>
+</table>
+
+
+
+
 <% else %>
     <h1>Please sign-in to continue!</h1>
     <button class="btn btn-primary"><%= link_to "Login", '/login', method: :get%></button>
     <button class="btn btn-primary"> <%= link_to "Sign Up", '/users/new', method: :get%> </button>
 <% end %>
-
 
 <style>
   a {

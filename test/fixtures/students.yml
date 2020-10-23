@@ -4,7 +4,8 @@ one:
   firstName: MyString
   lastName: MyString
   email: MyString
-  gradYear: 1
+  year: 1
+  gpa: 3.1
   major: MyString
   status: MyString
 
@@ -12,6 +13,7 @@ two:
   firstName: MyString
   lastName: MyString
   email: MyString
-  gradYear: 1
+  year: 1
+  gpa: 3.0
   major: MyString
   status: MyString
