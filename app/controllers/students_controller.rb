@@ -90,12 +90,16 @@ class StudentsController < ApplicationController
       #format.html
       #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
     #end
-    CSV.open(file, 'w') do |writer|
-      writer << Student.attribute_names
-      Student.find_each do |student|
-        writer << student.attributes.values
+    headers = "firstName,lastName,email,uin,year,major,gpa,status"
+    File.open(file, 'w') do |writer|
+      writer << headers
+      @students.each do |student|
+        writer << [student.firstName, student.lastName, student.email, student.year, student.major, student.gpa, student.status]
+        writer << "\n"  
       end
     end
+
+    send_file(file)
     redirect_to root_url, notice: "Student Data Exported"
   end
 
