@@ -8,12 +8,12 @@ class Student < ApplicationRecord
     end
 
     def self.to_csv(options = {})
-        #attributes = %w{firstName, lastName, email, uin, year, major, gpa, status}
+        attributes = %w{firstName, lastName, email, uin, year, major, gpa, status}
 
         CSV.generate(options) do |csv|
-            csv << column_names
+            csv << attributes
             all.each do |student|
-                csv << student.attributes.values_at{*column_names}
+                csv << student.attributes.values_at{*attributes}
             end
         end
     end
