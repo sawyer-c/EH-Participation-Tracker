@@ -30,7 +30,7 @@ class Student < ApplicationRecord
     STANDING_LIST = ["Good Standing", "Bad Standing"]
 
 
-    belongs_to :user, :class_name => 'User'
+    has_one :user, :class_name => 'User'
     accepts_nested_attributes_for :user
     
     has_and_belongs_to_many :events
