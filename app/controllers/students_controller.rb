@@ -77,8 +77,8 @@ class StudentsController < ApplicationController
 
   # Export to CSV
   def export
-    require 'csv'
-    file = "#{Rails.root}/public/student_data.csv"
+    #require 'csv'
+    #file = "#{Rails.root}/public/student_data.csv"
     #students = Student.order(:uin)
     #headers = ["firstName", "lastName", "email", "uin", "year", "major", "gpa",  "status"]
     #CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
@@ -87,23 +87,23 @@ class StudentsController < ApplicationController
       #end
     #end
 
-    students = Student.all;0
+    #students = Student.all;0
 
     #respond_to do |format|
       #format.html
       #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
     #end
-    headers = "firstName,lastName,email,uin,year,major,gpa,status"
-    File.open(file, 'w') do |writer|
-      writer << headers
-      students.each do |student|
-        writer << [student.firstName, student.lastName, student.email, student.year, student.major, student.gpa, student.status]
-        writer << "\n"  
-      end
-    end
+    #headers = "firstName,lastName,email,uin,year,major,gpa,status"
+    #File.open(file, 'w') do |writer|
+      #writer << headers
+      #students.each do |student|
+        #writer << [student.firstName, student.lastName, student.email, student.year, student.major, student.gpa, student.status]
+        #writer << "\n"  
+      #end
+    #end
 
-    send_file(file)
-    redirect_to root_url, notice: "Student Data Exported"
+    #send_file(file)
+    #redirect_to root_url, notice: "Student Data Exported"
   end
 
   private
