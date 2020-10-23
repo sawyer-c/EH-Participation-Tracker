@@ -91,7 +91,7 @@ class StudentsController < ApplicationController
       #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
     #end
     table = Student.all;0
-    CSV.open(file, w) do |writer|
+    CSV.open(file, 'w') do |writer|
       writer << table.first.attributes.map {|a,v| a}
       table.each do |s|
         writer << s.attributes.map {|a,v| v}
