@@ -84,7 +84,7 @@ class StudentsController < ApplicationController
       #end
     #end
 
-    #@students = Student.all
+    @students = Student.all
 
     #respond_to do |format|
       #format.html
@@ -93,7 +93,7 @@ class StudentsController < ApplicationController
     headers = "firstName,lastName,email,uin,year,major,gpa,status"
     File.open(file, 'w') do |writer|
       writer << headers
-      @students.each do |student|
+      students.each do |student|
         writer << [student.firstName, student.lastName, student.email, student.year, student.major, student.gpa, student.status]
         writer << "\n"  
       end
