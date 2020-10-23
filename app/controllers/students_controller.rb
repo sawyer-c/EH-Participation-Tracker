@@ -8,6 +8,7 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv {send_data @students.to_csv}
+    end
   end
 
   # GET /students/1
