@@ -54,6 +54,7 @@
   <%= submit_tag "Import CSV" %>
 <% end %>
 
-<%= form_tag export_students_path, multipart: true do %>
-  <%= submit_tag "Export to CSV" %>
-<% end %>
+<p>
+  Download:
+  <%= link_to "CSV", students_path(format: "csv") %>
+</p>
