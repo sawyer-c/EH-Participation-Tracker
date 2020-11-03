@@ -31,28 +31,29 @@ ActiveRecord::Schema.define(version: 20201023020323) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.integer "user_id"
     t.string "firstName"
     t.string "lastName"
     t.string "email"
     t.integer "uin"
     t.integer "year"
-    t.float "gpa"
     t.string "major"
+    t.float "gpa"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_students_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
+    t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "student_id"
-    t.index ["student_id"], name: "index_users_on_student_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "users", "students"
+  add_foreign_key "students", "users"
 end
