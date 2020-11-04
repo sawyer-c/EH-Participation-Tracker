@@ -9,7 +9,7 @@ RSpec.describe 'Registering User', type: :feature do
         visit welcome_path
         expect(page).to have_content("Please sign-in to continue!")
         click_button 'Sign Up'
-        fill_in 'Username', with: 'test1233'
+        fill_in 'Email', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Create User'
         expect(page).to have_content('Welcome back, test1233!')
@@ -33,7 +33,7 @@ RSpec.describe 'Logging in User', type: :feature do
         visit welcome_path
         expect(page).to have_content("Please sign-in to continue!")
         click_button 'Sign Up'
-        fill_in 'Username', with: 'test1233'
+        fill_in 'Email', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Create User'
         expect(page).to have_content('Welcome back, test1233!')
@@ -45,7 +45,7 @@ RSpec.describe 'Logging in User', type: :feature do
         end
 
         click_button 'Login'
-        fill_in 'Username', with: 'test1233'
+        fill_in 'Email', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Login'
         expect(page).to have_content('Welcome back, test1233!')
@@ -54,7 +54,7 @@ RSpec.describe 'Logging in User', type: :feature do
     scenario 'Login with unregistered user' do
         visit welcome_path
         click_button 'Login'
-        fill_in 'Username', with: 'test1233'
+        fill_in 'Email', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Login'
         expect(page).to have_content('Login')
@@ -66,7 +66,7 @@ RSpec.describe 'Penetration Testing', type: :feature do
         visit welcome_path
         expect(page).to have_content("Please sign-in to continue!")
         click_button 'Sign Up'
-        fill_in 'Username', with: 'test1233'
+        fill_in 'Email', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Create User'
         expect(page).to have_content('Welcome back, test1233!')
@@ -78,7 +78,7 @@ RSpec.describe 'Penetration Testing', type: :feature do
         end
 
         click_button 'Login'
-        fill_in 'Username', with: 'test1233\'or\'1\'=\'1'
+        fill_in 'Email', with: 'test1233\'or\'1\'=\'1'
         fill_in 'Password', with: 'test1233\'or\'1\'=\'1'
         click_on 'Login'
         expect(page).not_to have_content('Welcome back, test1233!')

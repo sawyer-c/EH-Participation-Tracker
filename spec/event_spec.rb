@@ -9,7 +9,7 @@ RSpec.describe 'Creating a event', type: :feature do
         visit welcome_path
         expect(page).to have_content("Please sign-in to continue!")
         click_button 'Sign Up'
-        fill_in 'Username', with: 'test1233'
+        fill_in 'Email', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Create User'
 
@@ -30,7 +30,7 @@ RSpec.describe 'Creating a event', type: :feature do
     #     visit welcome_path
     #     expect(page).to have_content("Please sign-in to continue!")
     #     click_button 'Sign Up'
-    #     fill_in 'Username', with: 'test1233'
+    #     fill_in 'Email', with: 'test1233'
     #     fill_in 'Password', with: 'test1233'
     #     click_on 'Create User'
 
@@ -52,7 +52,7 @@ RSpec.describe 'Updating a event', type: :feature do
       visit welcome_path
       expect(page).to have_content("Please sign-in to continue!")
       click_button 'Sign Up'
-      fill_in 'Username', with: 'test1233'
+      fill_in 'Email', with: 'test1233'
       fill_in 'Password', with: 'test1233'
       click_on 'Create User'
       
@@ -71,7 +71,7 @@ RSpec.describe 'Deleting a event', type: :feature do
       visit welcome_path
       expect(page).to have_content("Please sign-in to continue!")
       click_button 'Sign Up'
-      fill_in 'Username', with: 'test1233'
+      fill_in 'Email', with: 'test1233'
       fill_in 'Password', with: 'test1233'
       click_on 'Create User'
 
@@ -90,7 +90,7 @@ RSpec.describe 'Viewing a event', type: :feature do
     visit welcome_path
     expect(page).to have_content("Please sign-in to continue!")
     click_button 'Sign Up'
-    fill_in 'Username', with: 'test1233'
+    fill_in 'Email', with: 'test1233'
     fill_in 'Password', with: 'test1233'
     click_on 'Create User'
 

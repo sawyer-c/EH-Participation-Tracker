@@ -10210,7 +10210,7 @@ if ( xhrSupported ) {
 						options.type,
 						options.url,
 						options.async,
-						options.username,
+						options.email,
 						options.password
 					);
 

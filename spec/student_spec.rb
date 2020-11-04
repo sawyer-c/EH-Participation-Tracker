@@ -19,7 +19,7 @@ RSpec.describe 'Creating a student', type: :feature do
         visit welcome_path
         expect(page).to have_content("Please sign-in to continue!")
         click_button 'Sign Up'
-        fill_in 'Username', with: 'test1233'
+        fill_in 'Email', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Create User'
 
@@ -42,7 +42,7 @@ RSpec.describe 'Creating a student', type: :feature do
         visit welcome_path
         expect(page).to have_content("Please sign-in to continue!")
         click_button 'Sign Up'
-        fill_in 'Username', with: 'test1233'
+        fill_in 'Email', with: 'test1233'
         fill_in 'Password', with: 'test1233'
         click_on 'Create User'
 
@@ -64,7 +64,7 @@ RSpec.describe 'Updating a student', type: :feature do
       visit welcome_path
       expect(page).to have_content("Please sign-in to continue!")
       click_button 'Sign Up'
-      fill_in 'Username', with: 'test1233'
+      fill_in 'Email', with: 'test1233'
       fill_in 'Password', with: 'test1233'
       click_on 'Create User'
       
@@ -83,7 +83,7 @@ RSpec.describe 'Deleting a student', type: :feature do
       visit welcome_path
       expect(page).to have_content("Please sign-in to continue!")
       click_button 'Sign Up'
-      fill_in 'Username', with: 'test1233'
+      fill_in 'Email', with: 'test1233'
       fill_in 'Password', with: 'test1233'
       click_on 'Create User'
 
@@ -100,7 +100,7 @@ RSpec.describe 'Viewing a student', type: :feature do
     visit welcome_path
     expect(page).to have_content("Please sign-in to continue!")
     click_button 'Sign Up'
-    fill_in 'Username', with: 'test1233'
+    fill_in 'Email', with: 'test1233'
     fill_in 'Password', with: 'test1233'
     click_on 'Create User'
 
