@@ -10,13 +10,16 @@
     <h1>Welcome back, <%= current_user.username %>!</h1>
     
     <% if current_user.student.blank? %>
-      <% current_user.create_student(firstName: "enter first name", lastName: "enter last name", email: "email", uin: "101010101", year: "2020", major:"major", gpa:"4.0", status: "Good Standing") %>
+      <% current_user.create_student(firstName: "Your first name", lastName: "Your last name",  email: "email", uin: "000000000", year: "2020", major:"Your major", gpa:"4.0", status: "Good Standing") %>
     <% end %>
-    
-    <% if false %>
-    #<%# if current_user.student.events = nil? %>
-     # <%# current_user.student.event.create() %>
-    #<%# end %>
+
+    <% current_student = current_user.student %>
+
+    <% if current_student.event.empty? %>
+      <% current_student.event.create(name: "Event name", date: "date",  description: "Event describe", event_type: "1", location: "location of event") %>
+      <% current_student.event.create(name: "Event name", date: "date",  description: "Event describe", event_type: "1", location: "location of event") %>
+      <% current_student.event.create(name: "Event name", date: "date",  description: "Event describe", event_type: "1", location: "location of event") %>
+      <% current_student.event.create(name: "Event name", date: "date",  description: "Event describe", event_type: "1", location: "location of event") %>
     <% end %>
 
     <table id="dttb" class="table">
@@ -30,15 +33,9 @@
       <th>Major</th>
       <th>GPA</th>
       <th>Status</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-  <% if current_user.student.blank? %>
-        <tr>
-            <td>No student attached to user.</td>
-        </tr>
-    <% else %>
        <tr>
         <td><%= current_user.student.firstName%></td>
         <td><%= current_user.student.lastName%></td>
@@ -48,13 +45,7 @@
         <td><%= current_user.student.major%></td>
         <td><%= current_user.student.gpa%></td>
         <td><%= current_user.student.status%></td>
-        <td>
-          <b> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Edit"></i>'.html_safe, edit_student_path(current_user.student)%></b> |
-          <b> <%= link_to '<i class="fa fa-trash fa-lg" aria-hidden="true" data-toggle="tooltip" title="Delete"></i>'.html_safe, current_user.student,  method: :delete, data: { confirm: 'Are you sure?' } %></b> |
-          <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, current_user.student%></b>
-        </td>
        </tr>
-       <% end %>
   </tbody>
 </table>
 
@@ -71,28 +62,15 @@
     </tr>
   </thead>
   <tbody>
-  <% if false %>
-    <% current_user.student.events.each do |c| %>
+    <% current_student.event.each do |c| %>
        <tr>
         <td><%= c.name %></td>
         <td><%= c.date%></td>
         <td><%= c.description%></td>
         <td><%= c.event_type %></td>
         <td><%= c.location %></td>
-        <td>
-          <b> <%= link_to '<i class="fa fa-pencil fa-lg" aria-hidden="true" data-toggle="tooltip" title="Edit"></i>'.html_safe, edit_event_path(c)%></b> |
-          <b> <%= link_to '<i class="fa fa-trash fa-lg" aria-hidden="true" data-toggle="tooltip" title="Delete"></i>'.html_safe, c,  method: :delete, data: { confirm: 'Are you sure?' } %></b> |
-          <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, c%></b>
-        </td>
        </tr>
        <% end %>
-       <% end %>
-    <%# if current_user.student.events.blank? #%>
-        <tr>
-            <td>There are not any events associated.</td>
-        </tr>
-    <%# end #%>
-        
   </tbody>
 </table>
 

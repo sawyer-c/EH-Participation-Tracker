@@ -33,6 +33,6 @@ class Student < ApplicationRecord
     has_one :user, :class_name => 'User'
     accepts_nested_attributes_for :user
     
-    has_and_belongs_to_many :events
-    accepts_nested_attributes_for :events
+    has_and_belongs_to_many :event, :class_name => "Event"
+    accepts_nested_attributes_for :event
 end
