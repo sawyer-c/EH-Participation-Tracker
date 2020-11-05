@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
+  skip_before_action :authorized, only: %i[new create]
   after_action :verify_authorized, only: []
 
 
@@ -8,19 +10,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    # Create the user from params
-
     @user = User.create(params.require(:user).permit(:username, :password))
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to '/welcome'
-    end
- end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:email, :password)
+    session[:user_id] = @user.id
+    redirect_to '/welcome'
   end
-
 end

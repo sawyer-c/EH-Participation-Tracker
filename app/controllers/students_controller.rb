@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: %i[show edit update destroy]
 
   # GET /students
   # GET /students.json
@@ -7,14 +9,13 @@ class StudentsController < ApplicationController
     @students = Student.page(params[:page])
     respond_to do |format|
       format.html
-      format.csv {send_data @students.to_csv}
+      format.csv { send_data @students.to_csv }
     end
   end
 
   # GET /students/1
   # GET /students/1.json
-  def show
-  end
+  def show; end
 
   # GET /students/new
   def new
@@ -22,8 +23,7 @@ class StudentsController < ApplicationController
   end
 
   # GET /students/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /students
   # POST /students.json
@@ -65,56 +65,56 @@ class StudentsController < ApplicationController
     end
   end
 
-
   # Import From CSV
   def import
-    #require 'csv'
-    #CSV.foreach(file.path, headers: true) do |row|
-      #Student.create!(row.to_hash)
-    #end
+    # require 'csv'
+    # CSV.foreach(file.path, headers: true) do |row|
+    # Student.create!(row.to_hash)
+    # end
     Student.import(params[:file])
-    redirect_to root_url, notice: "Student Data Imported"
+    redirect_to root_url, notice: 'Student Data Imported'
   end
 
   # Export to CSV
-  #def export
-    #require 'csv'
-    #file = "#{Rails.root}/public/student_data.csv"
-    #students = Student.order(:uin)
-    #headers = ["firstName", "lastName", "email", "uin", "year", "major", "gpa",  "status"]
-    #CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
-      #students.each do |student|
-        #writer << [student.firstName, student.lastName, student.email, student.uin, student.year, student.major, student.gpa, student.status]
-      #end
-    #end
+  # def export
+  # require 'csv'
+  # file = "#{Rails.root}/public/student_data.csv"
+  # students = Student.order(:uin)
+  # headers = ["firstName", "lastName", "email", "uin", "year", "major", "gpa",  "status"]
+  # CSV.open(file, 'w', write_headers: true, headers: headers) do |writer|
+  # students.each do |student|
+  # writer << [student.firstName, student.lastName, student.email, student.uin, student.year, student.major, student.gpa, student.status]
+  # end
+  # end
 
-    #students = Student.all;0
+  # students = Student.all;0
 
-    #respond_to do |format|
-      #format.html
-      #format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
-    #end
-    #headers = "firstName,lastName,email,uin,year,major,gpa,status"
-    #File.open(file, 'w') do |writer|
-      #writer << headers
-      #students.each do |student|
-        #writer << [student.firstName, student.lastName, student.email, student.year, student.major, student.gpa, student.status]
-        #writer << "\n"  
-      #end
-    #end
+  # respond_to do |format|
+  # format.html
+  # format.csv {send_data @students.to_csv, filename: "Students-#{Date.today}.csv"}
+  # end
+  # headers = "firstName,lastName,email,uin,year,major,gpa,status"
+  # File.open(file, 'w') do |writer|
+  # writer << headers
+  # students.each do |student|
+  # writer << [student.firstName, student.lastName, student.email, student.year, student.major, student.gpa, student.status]
+  # writer << "\n"
+  # end
+  # end
 
-    #send_file(file)
-    #redirect_to root_url, notice: "Student Data Exported"
-  #end
+  # send_file(file)
+  # redirect_to root_url, notice: "Student Data Exported"
+  # end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def student_params
-      params.require(:student).permit(:firstName, :lastName, :email, :uin, :year, :major, :gpa, :status)
-    end    
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student
+    @student = Student.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def student_params
+    params.require(:student).permit(:firstName, :lastName, :email, :uin, :year, :major, :gpa, :status)
+  end
 end

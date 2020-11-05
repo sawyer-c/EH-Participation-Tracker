@@ -1,9 +1,10 @@
-class User < ApplicationRecord
-    before_create :confirmation_token
-    has_secure_password
-    validates_uniqueness_of :email
+# frozen_string_literal: true
 
-    enum role: [:member, :admin]
+class User < ApplicationRecord
+  has_secure_password
+  validates_uniqueness_of :username
+
+  enum role: %i[member admin]
 
     has_one :student, :class_name => 'Student'
     accepts_nested_attributes_for :student
@@ -11,9 +12,7 @@ class User < ApplicationRecord
     has_and_belongs_to_many :event, through: :student
     accepts_nested_attributes_for :event
 
-    after_initialize do
-        if self.new_record?
-            self.role ||= :admin
-        end
-    end
+  after_initialize do
+    self.role ||= :admin if new_record?
+  end
 end
