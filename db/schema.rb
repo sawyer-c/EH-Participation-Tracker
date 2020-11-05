@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201022091035) do
+ActiveRecord::Schema.define(version: 20201023020323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "Events_Students", id: false, force: :cascade do |t|
+    t.bigint "Student_id", null: false
+    t.bigint "Event_id", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -30,21 +35,25 @@ ActiveRecord::Schema.define(version: 20201022091035) do
     t.string "lastName"
     t.string "email"
     t.integer "uin"
-    t.integer "gradYear"
+    t.integer "year"
     t.string "major"
+    t.float "gpa"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "gpa"
-    t.integer "year"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_students_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
+    t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "students", "users"
 end

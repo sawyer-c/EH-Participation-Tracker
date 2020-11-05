@@ -1,4 +1,4 @@
 class StudentSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :firstName, :lastName, :email, :uin, :gradYear, :major, :status
+  attributes :firstName, :lastName, :email, :uin, :year, :gpa, :major, :status
 end
