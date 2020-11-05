@@ -10,7 +10,7 @@
     <h1>Welcome back, <%= current_user.email %>!</h1>
     
     <% if current_user.student.blank? %>
-      <% current_user.create_student(firstName: "Your first name", lastName: "Your last name",  email: "email", uin: "000000000", year: "2020", major:"Your major", gpa:"4.0", status: "Good Standing") %>
+      <% current_user.create_student(firstName: "Your first name", lastName: "Your last name",  email: current_user.email, uin: "000000000", year: "2020", major:"Your major", gpa:"4.0", status: "Good Standing") %>
     <% end %>
 
     <% current_student = current_user.student %>
