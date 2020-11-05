@@ -13,27 +13,27 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :event_name %>
+    <%= form.text_field :name, id: :event_name, required: true%>
   </div>
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.datetime_field :date, id: :event_date %>
+    <%= form.datetime_field :date, id: :event_date, required: true%>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description, id: :event_description %>
+    <%= form.text_field :description, id: :event_description, required: true%>
   </div>
 
   <div class="field">
     <%= form.label :event_type %>
-    <%= form.text_field :event_type, id: :event_type %>
+    <%= form.text_field :event_type, id: :event_type, required: true%>
   </div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_field :location, id: :location %>
+    <%= form.text_field :location, id: :location, required: true%>
   </div>
 
   <div class="actions">
