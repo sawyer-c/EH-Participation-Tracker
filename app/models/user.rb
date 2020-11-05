@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
     after_initialize do
         if self.new_record?
-            self.role ||= :member
+            self.role ||= :admin
         end
     end
 end
