@@ -50,10 +50,10 @@
 
 <div style="margin-top:50px;">
   <ul style="display:inline;">
-    <li><%= form_tag import_students_path, multipart: true do %>
+    <li style="display:inline;"><%= form_tag import_students_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import CSV" %>
     <% end %></li>
-    <li><%= button_to "Download CSV", students_path(format: "csv") %></li>
+    <li stlye="display:inline;"><%= button_to "Download CSV", students_path(format: "csv") %></li>
   </ul>
 </div>
