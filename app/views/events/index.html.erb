@@ -41,9 +41,15 @@
 
 <%= link_to '<span data-toggle="tooltip" title="Add New Event to Collection"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp;Add Event</span>'.html_safe, new_event_path%>
 
+<div style="margin-top:10px;">
+</div>
+
 <%= form_tag import_events_path, multipart: true do %>
   <%= file_field_tag :file %>
   <%= submit_tag "Import CSV" %>
 <% end %>
+
+<div style="margin-top:10px;">
+</div>
 
 <%= link_to "Download CSV", events_path(format: "csv") %>
