@@ -49,7 +49,6 @@
 <%= link_to '<span data-toggle="tooltip" title="Add New Student"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp;Add Student</span>'.html_safe, new_student_path%>
 
 <div style="margin-top:10px;">
-      <p>Import</p>
 </div>
 
     <%= form_tag import_students_path, multipart: true do %>
@@ -58,7 +57,6 @@
     <% end %>
 
 <div style="margin-top:10px;">
-      <p>Export</p>
 </div>
 
  <%= button_to "Download CSV", students_path(format: "csv") %>
