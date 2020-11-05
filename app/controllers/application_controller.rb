@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	include Pundit
 	before_action :authorized
 	protect_from_forgery with: :exception
 	helper_method :current_user
