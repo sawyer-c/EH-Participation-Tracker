@@ -11,9 +11,12 @@ Rails.application.routes.draw do
     collection {post :import}
     collection {post :export}
   end
-  resources :events
+  resources :events do
+    collection {post :import}
+    collection {post :export}
+  end
   root "sessions#welcome"
-
+  
   namespace :api do
     namespace :v1 do
       resources :students, param: :uin
