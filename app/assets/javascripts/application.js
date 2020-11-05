@@ -22,6 +22,13 @@ $(document).ready(function() {
   $('#dttb2').DataTable();
 } );
 
+$(document).ready(function(){
+  $('#attend').click(function(){
+    console.log("HIE");
+    $('#unattend').toggle();
+  });
+});
+
   document.addEventListener('turbolinks:load', function() {
     // Initialize theme
     if (localStorage.getItem('themeSwitch') == 'dark') {

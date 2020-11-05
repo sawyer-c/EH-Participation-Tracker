@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WelcomeMailer < ApplicationMailer
   default from: 'no-reply@eh-participation-tracker.herokuapp.com'
 
@@ -9,12 +11,12 @@ class WelcomeMailer < ApplicationMailer
 
   def create
     @user = User.new(params[:user])
- 
+
     respond_to do |format|
       if @user.save
         # Tell the UserMailer to send a welcome email after save
         UserMailer.with(user: @user).welcome_email.deliver_later
- 
+
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
         format.json { render json: @user, status: :created, location: @user }
       else

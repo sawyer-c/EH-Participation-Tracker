@@ -16,6 +16,8 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+button.hidden { display: none; }
+
 body {
   background-color: #dddddd;
 }
