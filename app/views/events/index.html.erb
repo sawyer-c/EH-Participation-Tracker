@@ -1,11 +1,10 @@
-<link rel="stylesheet" type="text/css" href="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 <p id="notice"><%= notice %></p>
 
 <h1>Events</h1>
 
 <br>
 
-<table id="dttb" class="table">
+<table id="dttb2" class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,6 +12,7 @@
       <th>Description</th>
       <th>EventType</th>
       <th>Location</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -40,3 +40,10 @@
 </table>
 
 <%= link_to '<span data-toggle="tooltip" title="Add New Event to Collection"><i class="fa fa-plus fa-lg" aria-hidden="true"></i>&nbsp;Add Event</span>'.html_safe, new_event_path%>
+
+<%= form_tag import_events_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import CSV" %>
+<% end %>
+
+<%= link_to "Download CSV", events_path(format: "csv") %>

@@ -7,13 +7,20 @@
 //= require turbolinks
 //= require libraries/headroom
 //= require init
-//= require_tree
+//= require_tree .
 
-$(document).on('turbolinks:load', function() {
-  $("#dttb").dataTable();
-  localStorage.setItem('themeSwitch', 'light');
-  });
+// $(document).on('turbolinks:load', function() {
+//   $("#dttb").dataTable();
+//   localStorage.setItem('themeSwitch', 'light');
+//   });
 
+$(document).ready(function() {
+  $('#dttb').DataTable();
+} );
+
+$(document).ready(function() {
+  $('#dttb2').DataTable();
+} );
 
   document.addEventListener('turbolinks:load', function() {
     // Initialize theme

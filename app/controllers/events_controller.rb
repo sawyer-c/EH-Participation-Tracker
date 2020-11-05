@@ -5,6 +5,10 @@ class EventsController < ApplicationController
 	# GET /events.json
 	def index
 	  @events = Event.page(params[:page])
+	  respond_to do |format|
+		format.html
+		format.csv {send_data @events.to_csv}
+	  end
 	end
   
 	# GET /events/1
@@ -60,7 +64,11 @@ class EventsController < ApplicationController
 		format.json { head :no_content }
 	  end
 	end
-  
+	# Import from CSV
+	def import
+		Event.import(params[:file])
+		redirect_to root_url, notice: "Event Data Imported"
+	end
 	private
 	  # Use callbacks to share common setup or constraints between actions.
 	  def set_event
