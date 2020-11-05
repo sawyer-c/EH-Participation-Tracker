@@ -65,9 +65,6 @@ class EventsController < ApplicationController
 		Event.import(params[:file])
 		redirect_to root_url, notice: "Event Data Imported"
 	end
-
-	# Export from CSV
-	def export
 	private
 	  # Use callbacks to share common setup or constraints between actions.
 	  def set_event
