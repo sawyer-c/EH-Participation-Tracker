@@ -30,8 +30,8 @@
           <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, c%></b>
         </td>
         <td>
-          <button id="<%=c.id %>Attend" onclick="clickedAttend(this);" type="btn btn-lg btn-primary">Attend</button>
-          <button id="<%=c.id %>AttendR" style="display: none" onclick="clickedUnAttend(this);" type="btn btn-lg btn-primary">UnAttend</button>
+          <button id="<%=c.id %>Attend" class="attend" onclick="clickedAttend(this);" type="btn btn-lg btn-primary">Attend</button>
+          <button id="<%=c.id %>AttendR" class="attend" style="display: none" onclick="clickedUnAttend(this);" type="btn btn-lg btn-primary">UnAttend</button>
         </td>
        </tr>
        <% end %>
