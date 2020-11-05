@@ -9,15 +9,12 @@ class UsersController < ApplicationController
   def create
     # Create the user from params
 
-    @user = User.new(user_params)
+    @user = User.create(params.require(:user).permit(:username, :password))
     if @user.save
-      @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
-    else
-      render :action => 'new'
+      session[:user_id] = @user.id
+      redirect_to '/welcome'
     end
-  end
+ end
 
   private
 
