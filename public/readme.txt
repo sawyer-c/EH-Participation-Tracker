@@ -33,7 +33,6 @@ Table of Contents
 I. Intstructions
 --------------------
 
-
  Home
 _________________________________________________________________________________________
 Upon launching the application, users will be asked to either sign in or create an account
