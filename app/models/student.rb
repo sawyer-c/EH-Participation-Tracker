@@ -18,7 +18,14 @@ class Student < ApplicationRecord
         csv << [student.firstName, student.lastName, student.email, student.uin, student.year, student.major, student.gpa, student.status]
       end
     end
-        
+  end        
+
+    has_one :user, :class_name => 'User'
+    accepts_nested_attributes_for :user
+    
+    has_and_belongs_to_many :event, :class_name => "Event"
+    accepts_nested_attributes_for :event
+    
     validates :firstName, presence: true
     validates :lastName, presence: true
     validates :email, presence: true
@@ -28,12 +35,6 @@ class Student < ApplicationRecord
     validates :gpa, presence: true
     validates :status, presence: true
 
-    STANDING_LIST = ["Good Standing", "Bad Standing"].freeze
-
-
-    has_one :user, :class_name => 'User'
-    accepts_nested_attributes_for :user
-    
-    has_and_belongs_to_many :event, :class_name => "Event"
-    accepts_nested_attributes_for :event
+    STANDING_LIST = ["Good Standing", "Bad Standing"]
 end
+

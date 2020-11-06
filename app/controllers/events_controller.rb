@@ -71,6 +71,22 @@ class EventsController < ApplicationController
     redirect_to root_url, notice: 'Event Data Imported'
   end
 
+  def attach_to_student(attach_event, current_student)
+        current_student.events << attach_event
+        respond_to do |format|
+          format.html { redirect_to events_url, notice: 'Successfully attended event.' }
+        end
+  end
+
+  def detach_from_student(detach_event)
+    
+    #@part.assemblies << detach_event #current line attaches. Need to figure out how to detach without destroying object.
+
+    respond_to do |format|
+      format.html { redirect_to events_url, notice: 'Successfully unattended event.' }
+    end
+end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

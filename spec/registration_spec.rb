@@ -86,7 +86,7 @@ RSpec.describe 'Penetration Testing', type: :feature do
     end
 
     click_button 'Login'
-    fill_in 'Username', with: 'test1233\'or\'1\'=\'1'
+    fill_in 'email', with: 'test1233\'or\'1\'=\'1'
     fill_in 'Password', with: 'test1233\'or\'1\'=\'1'
     click_on 'Login'
     expect(page).not_to have_content('Welcome back, test1233!')

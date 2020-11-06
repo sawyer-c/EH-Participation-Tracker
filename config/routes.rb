@@ -18,10 +18,16 @@ Rails.application.routes.draw do
   end
   root 'sessions#welcome'
 
+  get "events/attach_to_student" => "events#attach_to_student"
+  get "events/detach_from_student" => "events#detach_from_student"
+
+  resources :students
+  resources :events
+
   namespace :api do
     namespace :v1 do
       resources :students, param: :uin
-      resources :events, param: :eventID
+      resources :events, param: :name
     end
   end
 end

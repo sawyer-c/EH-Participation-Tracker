@@ -30,8 +30,12 @@
           <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, c%></b>
         </td>
         <td>
-          <button id="<%=c.id %>Attend" onclick="clickedAttend(this);" type="btn btn-lg btn-primary">Attend</button>
-          <button id="<%=c.id %>AttendR" style="display: none" onclick="clickedUnAttend(this);" type="btn btn-lg btn-primary">UnAttend</button>
+            <% current_student = current_user.student %>
+            <% if current_student.event.where("name > ?", c.name) %>
+              <%= button_to "Attend", { :controller => "events", :action => "attach_to_student(c, current_student)"}, class: "btn btn-primary" %>
+            <% else %>
+              <%= button_to "Unattend", { :controller => "events", :action => "detach_from_student(c, current_student)"}, class: 'btn btn-primary' %>
+            <% end %>
         </td>
        </tr>
        <% end %>
@@ -58,18 +62,3 @@
 </div>
 
 <%= link_to "Download CSV", events_path(format: "csv") %>
-
-<script type="text/javascript">
-  function clickedAttend(item) {
-    console.log(name);
-    $('#' + item.id).toggle();
-    $('#' + item.id + 'R').toggle();
-   }
-
-   function clickedUnAttend(item) {
-    console.log(name);
-    $('#' + item.id).toggle();
-    console.log(item.id.substring(0, item.id.length-2));
-    $('#' + item.id.substring(0, item.id.length-1)).toggle();
-   }
-</script>
