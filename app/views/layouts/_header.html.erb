@@ -1,29 +1,18 @@
 <header>
-<div>
-  <nav class="navbar">
+  <div>
+    <nav class="navbar">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        
-		<div class="navbar-collapse" id="myNavbar">
+        <div class="navbar-collapse" id="myNavbar">
           <ul style="display: inline-block" class="nav navbar-nav">
             <li class="mynav" <%= "active" if params[:controller] == "Home" %>"><%= link_to "Welcome", welcome_path, :class => "mynav-link" %></li>
             <li class="mynav" <%= "active" if params[:controller] == "students" %>"><%= link_to "Students", students_path, :class => "mynav-link" %></li>
             <li class="mynav" <%= "active" if params[:controller] == "events" %>"><%= link_to "Events", events_path, :class => "mynav-link" %></li>
             <li><a class="mynav" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
             <li class="mynav" "=""><a class="mynav-link" href="/readme.txt" target="_blank">Readme</a></li>
-            </ul>		  
+          </ul>		  
         </div>
-		
-		<ul class="nav navbar-nav navbar-right">
-            <a style="position: absolute; top: 8px; right: 8px;" href="https://engineering.tamu.edu/" target="_blank"> <img src="/tamu-engr-logo.png" style="float: right; height: 5vh; width: 5vh;"/></a>
-		</ul>
+        <a style="position: fixed; top: 8px; right: 8px;" href="https://engineering.tamu.edu/" target="_blank"> <img src="/tamu-engr-logo.png" style="float: right; height: 47px; width: 47px;"/></a>
       </div>
     </nav>
-</div>
+  </div>
 </header>

@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201105044053) do
+ActiveRecord::Schema.define(version: 20201105035325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "Events_Students", id: false, force: :cascade do |t|
+    t.bigint "Student_id", null: false
+    t.bigint "Event_id", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -23,11 +28,6 @@ ActiveRecord::Schema.define(version: 20201105044053) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "events_students", id: false, force: :cascade do |t|
-    t.bigint "student_id", null: false
-    t.bigint "event_id", null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -46,25 +46,14 @@ ActiveRecord::Schema.define(version: 20201105044053) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
+    t.string "username", null: false
+    t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "email_confirmed"
-    t.string "confirm_token"
-    t.string "encrypted_password", limit: 128
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128
-    t.string "remember_digest"
-    t.string "activation_digest"
-    t.boolean "activated", default: false
-    t.datetime "activated_at"
-    t.string "reset_digest"
-    t.datetime "reset_sent_at"
-    t.string "name"
     t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["remember_token"], name: "index_users_on_remember_token"
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "students", "users"
