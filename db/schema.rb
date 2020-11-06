@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,49 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_105_035_325) do
+ActiveRecord::Schema.define(version: 20201105035325) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'Events_Students', id: false, force: :cascade do |t|
-    t.bigint 'Student_id', null: false
-    t.bigint 'Event_id', null: false
+  create_table "Events_Students", id: false, force: :cascade do |t|
+    t.bigint "Student_id", null: false
+    t.bigint "Event_id", null: false
   end
 
-  create_table 'events', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'date'
-    t.text 'description'
-    t.string 'event_type'
-    t.string 'location'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.datetime "date"
+    t.text "description"
+    t.string "event_type"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'students', force: :cascade do |t|
-    t.string 'firstName'
-    t.string 'lastName'
-    t.string 'email'
-    t.integer 'uin'
-    t.integer 'gradYear'
-    t.string 'major'
-    t.string 'status'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.float 'gpa'
-    t.integer 'year'
-    t.bigint 'user_id'
-    t.index ['user_id'], name: 'index_students_on_user_id'
+  create_table "students", force: :cascade do |t|
+    t.string "firstName"
+    t.string "lastName"
+    t.string "email"
+    t.integer "uin"
+    t.integer "year"
+    t.string "major"
+    t.float "gpa"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_students_on_user_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'username', null: false
-    t.string 'password_digest'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'role'
-    t.index ['username'], name: 'index_users_on_username', unique: true
+  create_table "users", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "role"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key 'students', 'users'
+  add_foreign_key "students", "users"
 end
