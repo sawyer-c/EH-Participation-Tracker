@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
-  enum role: [member admin]
+  enum role: %i[member admin]
 
     has_one :student, :class_name => 'Student'
     accepts_nested_attributes_for :student
