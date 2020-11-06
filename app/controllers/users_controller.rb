@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: %i[new create]
+  skip_before_action :authorized, only: [new create]
   after_action :verify_authorized, only: []
 
 
