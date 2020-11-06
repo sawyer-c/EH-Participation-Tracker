@@ -78,9 +78,9 @@ class EventsController < ApplicationController
         end
   end
 
-  def detach_from_student(detach_event)
+  def detach_from_student(detach_event, current_student)
     
-    #@part.assemblies << detach_event #current line attaches. Need to figure out how to detach without destroying object.
+    #@current_students.events << detach_event current line attaches. Need to figure out how to detach without destroying object.
 
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Successfully unattended event.' }

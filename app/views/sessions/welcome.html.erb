@@ -9,22 +9,16 @@
 <% if logged_in? %>
     <h1>Welcome back, <%= current_user.email %>!</h1>
     
-    <% if current_user.student.blank? %>
-      <% student_with_email = Student.where(email: current_user.email) %>
-      <% if student_with_email.exists? %>
-        <% current_user.create_student(firstName: student_with_email.firstName, lastName: @student_with_email[lastName],  email: current_user[email], uin: @student_with_email[uin], year: @student_with_email[year], major: @student_with_email[major], gpa: @student_with_email[gpa], status: @student_with_email[status]) %>
-      <% end %>
-        <% current_user.create_student(firstName: "Your first name", lastName: "Your last name",  email: current_user.email, uin: "000000000", year: "2020", major:"Your major", gpa:"4.0", status: "Good Standing") %>
+    <% if current_user.student.nil? %>
+      <% student_match = Student.find_by(email: current_user.email) %>
+        <% if student_match.nil? %>
+          <% current_user.create_student(firstName: "Your first name", lastName: "Your last name",  email: current_user.email, uin: "000000000", year: "2020", major:"Your major", gpa:"4.0", status: "Good Standing") %>  
+        <% else %>
+          <% current_user.create_student(firstName: student_match.firstName, lastName: student_match.lastName,  email: current_user.email, uin: student_match.uin, year: student_match.year, major: student_match.major, gpa: student_match.gpa , status: student_match.status) %>
+        <% end %>
     <% end %>
 
     <% current_student = current_user.student %>
-
-    <% if current_student.event.empty? %>
-      <% current_student.event.create(name: "Event name", date: "date",  description: "Event describe", event_type: "1", location: "location of event") %>
-      <% current_student.event.create(name: "Event name", date: "date",  description: "Event describe", event_type: "1", location: "location of event") %>
-      <% current_student.event.create(name: "Event name", date: "date",  description: "Event describe", event_type: "1", location: "location of event") %>
-      <% current_student.event.create(name: "Event name", date: "date",  description: "Event describe", event_type: "1", location: "location of event") %>
-    <% end %>
 
     <table class="table">
   <thead>
@@ -75,6 +69,11 @@
         <td><%= c.location %></td>
        </tr>
        <% end %>
+       <% if current_student.event.empty? %>
+       <tr>
+           <td>There are not any events currently in the system.</td>
+       </tr>
+   <% end %>
   </tbody>
 </table>
 
