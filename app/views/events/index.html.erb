@@ -31,10 +31,10 @@
         </td>
         <td>
           <% current_student = current_user.student %>
-          <% if current_student.event.where("name > ?", c.name) %>
-            <button id="<%=c.name %>" onclick= <% current_student.event << c %> type="btn btn-lg btn-primary">Attend</button> 
+          <% if current_student.event.where(name: c.name).exists? %>
+            <button id="<%=c.name %>" onclick= "<% current_student.event.delete(c) %> location.reload(true)" type="btn btn-lg btn-primary">unattend</button> 
           <% else %>
-            <button id="<%=c.name %>" onclick= <% current_student.event.delete(c) %> type="btn btn-lg btn-primary">Unattend</button> 
+            <button id="<%=c.name %>" onclick= "<% current_student.event << c %> location.reload(true)" type="btn btn-lg btn-primary">Attend</button> 
           <% end %>
         </td>
        </tr>
