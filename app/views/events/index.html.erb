@@ -32,9 +32,9 @@
         <td>
           <% current_student = current_user.student %>
           <% if current_student.event.where(name: c.name).exists? %>
-            <button id="<%=c.name %>" onclick= "<% current_student.event.delete(c) %> location.reload(true)" class="btn btn-primary">unattend</button> 
+            <button id="<%=c.name %>" onclick= "<% current_student.event.delete(c) %>" class="btn btn-primary">unattend</button> 
           <% else %>
-            <button id="<%=c.name %>" onclick= "<% current_student.event << c %> location.reload(true)" class="btn btn-primary">Attend</button> 
+            <button id="<%=c.name %>" onclick= "<% current_student.event << c %>" class="btn btn-primary">Attend</button> 
           <% end %>
         </td>
        </tr>
