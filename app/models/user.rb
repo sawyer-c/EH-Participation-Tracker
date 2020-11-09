@@ -14,6 +14,6 @@ class User < ApplicationRecord
     accepts_nested_attributes_for :event
 
   after_initialize do
-    self.role ||= :admin if new_record?
+    self.role ||= :member if new_record?
   end
 end
