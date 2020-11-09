@@ -15,8 +15,7 @@ class StudentsController < ApplicationController
 
   # GET /students/1
   # GET /students/1.json
-  def show
-  end
+  def show; end
 
   # GET /students/new
   def new
@@ -106,8 +105,6 @@ class StudentsController < ApplicationController
   # send_file(file)
   # redirect_to root_url, notice: "Student Data Exported"
   # end
-
-  
 
   private
 

@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   end
   root 'sessions#welcome'
 
-  post "events/attach_to_student" => "events#attach_to_student"
-  post "events/detach_from_student" => "events#detach_from_student"
+  post 'events/attach_to_student' => 'events#attach_to_student'
+  post 'events/detach_from_student' => 'events#detach_from_student'
 
   resources :students
   resources :events

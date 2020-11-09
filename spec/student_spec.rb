@@ -8,13 +8,13 @@ require 'capybara/dsl'
 # require 'books'
 
 RSpec.describe 'Creating a student', type: :feature do
-    scenario 'valid inputs' do
-        visit welcome_path
-        expect(page).to have_content("Please sign-in to continue!")
-        click_button 'Sign Up'
-        fill_in 'Email', with: 'test1233'
-        fill_in 'Password', with: 'test1233'
-        click_on 'Create User'
+  scenario 'valid inputs' do
+    visit welcome_path
+    expect(page).to have_content('Please sign-in to continue!')
+    click_button 'Sign Up'
+    fill_in 'Email', with: 'test1233'
+    fill_in 'Password', with: 'test1233'
+    click_on 'Create User'
 
     visit new_student_path
 
@@ -31,13 +31,13 @@ RSpec.describe 'Creating a student', type: :feature do
     expect(page).to have_content('Sam')
   end
 
-    scenario 'invalid inputs' do
-        visit welcome_path
-        expect(page).to have_content("Please sign-in to continue!")
-        click_button 'Sign Up'
-        fill_in 'Email', with: 'test1233'
-        fill_in 'Password', with: 'test1233'
-        click_on 'Create User'
+  scenario 'invalid inputs' do
+    visit welcome_path
+    expect(page).to have_content('Please sign-in to continue!')
+    click_button 'Sign Up'
+    fill_in 'Email', with: 'test1233'
+    fill_in 'Password', with: 'test1233'
+    click_on 'Create User'
 
     visit new_student_path
 
@@ -72,13 +72,13 @@ RSpec.describe 'Updating a student', type: :feature do
 end
 
 RSpec.describe 'Deleting a student', type: :feature do
-    scenario 'success' do
-      visit welcome_path
-      expect(page).to have_content("Please sign-in to continue!")
-      click_button 'Sign Up'
-      fill_in 'Email', with: 'test1233'
-      fill_in 'Password', with: 'test1233'
-      click_on 'Create User'
+  scenario 'success' do
+    visit welcome_path
+    expect(page).to have_content('Please sign-in to continue!')
+    click_button 'Sign Up'
+    fill_in 'Email', with: 'test1233'
+    fill_in 'Password', with: 'test1233'
+    click_on 'Create User'
 
     newB = Student.create!(firstName: 'Magic', lastName: 'Phil', email: 'Nice', gpa: 2.1, status: 'Bad Standing', uin: 123_213, year: 2001, major: 'CSCE')
     visit students_path

@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   skip_before_action :authorized, only: %i[new create]
   after_action :verify_authorized, only: []
 
-
   def new
     @user = User.new
   end
