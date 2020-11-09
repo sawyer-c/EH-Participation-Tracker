@@ -97,22 +97,9 @@ III. Technology Stack
 
 IV. Development Team
 --------------------
- Sawyer Cowan - Project Manager, Full-Stack Developer
+ Sawyer Cowan - Scrum Master, Full-Stack Developer
  Nicholas Tann - Product Owner, Full-Stack Developer
  Dawnson Abner - Assistive Technologies, Back-End Developer
  Phillip Pham - Quality Assurance Tester, Back-End Developer
  Chuck Esedebe - Assistive Technologies, Front-End Developer
 
-V. Setup
---------------------
-??
-
-
-VI. System Requirements
---------------------
-??
-
-
-VII. Testing
---------------------
-??
