@@ -7,13 +7,13 @@ require 'capybara/rspec'
 require 'capybara/dsl'
 
 RSpec.describe 'Creating a event', type: :feature do
-    scenario 'valid inputs' do
-        visit welcome_path
-        expect(page).to have_content("Please sign-in to continue!")
-        click_button 'Sign Up'
-        fill_in 'Email', with: 'test1233'
-        fill_in 'Password', with: 'test1233'
-        click_on 'Create User'
+  scenario 'valid inputs' do
+    visit welcome_path
+    expect(page).to have_content('Please sign-in to continue!')
+    click_button 'Sign Up'
+    fill_in 'Email', with: 'test1233'
+    fill_in 'Password', with: 'test1233'
+    click_on 'Create User'
 
     visit new_event_path
 
@@ -29,21 +29,21 @@ RSpec.describe 'Creating a event', type: :feature do
   end
 
   scenario 'invalid inputs' do
-      visit welcome_path
-      expect(page).to have_content("Please sign-in to continue!")
-      click_button 'Sign Up'
-      fill_in 'Username', with: 'test1233'
-      fill_in 'Password', with: 'test1233'
-      click_on 'Create User'
+    visit welcome_path
+    expect(page).to have_content('Please sign-in to continue!')
+    click_button 'Sign Up'
+    fill_in 'Username', with: 'test1233'
+    fill_in 'Password', with: 'test1233'
+    click_on 'Create User'
 
-      visit new_event_path
+    visit new_event_path
 
-      fill_in 'Name', with: 'Honor Career Fair'
-      fill_in 'Date', with: DateTime.current.strftime("%m%d%Y\t%I%M%P")
-      fill_in 'Description', with: 'Gimme job pls man'
-      fill_in 'event_type', with: 'Career Fair'
-      click_on 'Create Event'
-      expect(page).to have_content('New Event')
+    fill_in 'Name', with: 'Honor Career Fair'
+    fill_in 'Date', with: DateTime.current.strftime("%m%d%Y\t%I%M%P")
+    fill_in 'Description', with: 'Gimme job pls man'
+    fill_in 'event_type', with: 'Career Fair'
+    click_on 'Create Event'
+    expect(page).to have_content('New Event')
   end
 end
 
@@ -68,20 +68,20 @@ RSpec.describe 'Updating a event', type: :feature do
 end
 
 RSpec.describe 'Deleting a event', type: :feature do
-    scenario 'success' do
-      visit welcome_path
-      expect(page).to have_content("Please sign-in to continue!")
-      click_button 'Sign Up'
-      fill_in 'Email', with: 'test1233'
-      fill_in 'Password', with: 'test1233'
-      click_on 'Create User'
+  scenario 'success' do
+    visit welcome_path
+    expect(page).to have_content('Please sign-in to continue!')
+    click_button 'Sign Up'
+    fill_in 'Email', with: 'test1233'
+    fill_in 'Password', with: 'test1233'
+    click_on 'Create User'
 
-      newB = Event.create!(name: 'LOLMAN', description:'Get a job', event_type:'Career Fair', location: 'Zach 420', date: DateTime.current.strftime("%m%d%Y\t%I%M%P"))
-      visit events_path
-      find(:xpath, ".//a[i[contains(@class, 'fa fa-trash fa-lg')]]").click
-      page.driver.browser.switch_to.alert.accept
-      expect(page).to have_content('Event was successfully destroyed.')
-      expect(page).not_to have_content('LOLMAN')
+    newB = Event.create!(name: 'LOLMAN', description: 'Get a job', event_type: 'Career Fair', location: 'Zach 420', date: DateTime.current.strftime("%m%d%Y\t%I%M%P"))
+    visit events_path
+    find(:xpath, ".//a[i[contains(@class, 'fa fa-trash fa-lg')]]").click
+    page.driver.browser.switch_to.alert.accept
+    expect(page).to have_content('Event was successfully destroyed.')
+    expect(page).not_to have_content('LOLMAN')
 
     newB = Event.create!(name: 'LOLMAN', description: 'Get a job', event_type: 'Career Fair', location: 'Zach 420', date: DateTime.current.strftime("%m%d%Y\t%I%M%P"))
     visit events_path
