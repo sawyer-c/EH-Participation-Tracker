@@ -4,6 +4,8 @@
 
 <br>
 
+<% current_student = current_user.student %>
+
 <table id="dttb2" class="table">
   <thead>
     <tr>
@@ -30,11 +32,10 @@
           <b> <%= link_to '<i class="fa fa-search fa-lg" aria-hidden="true" data-toggle="tooltip" title="View"></i>'.html_safe, c%></b>
         </td>
         <td>
-          <% current_student = current_user.student %>
           <% if current_student.event.where(name: c.name).exists? %>
-            <button id="<%=c.name %>" onclick= "<% current_student.event.delete(c) %>" class="btn btn-primary">unattend</button> 
+            <%= button_to "Unattend", {:controller => "students", :action => "remove_event", :event => c, :user => current_user}, :method=> :post  %>
           <% else %>
-            <button id="<%=c.name %>" onclick= "<% current_student.event << c %>" class="btn btn-primary">Attend</button> 
+            <%= button_to 'Attend', {:controller => "students", :action => "add_event", :event => c, :user => current_user}, :method=> :post  %>
           <% end %>
         </td>
        </tr>

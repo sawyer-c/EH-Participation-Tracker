@@ -15,11 +15,6 @@ ActiveRecord::Schema.define(version: 20201105035325) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "Events_Students", id: false, force: :cascade do |t|
-    t.bigint "Student_id", null: false
-    t.bigint "Event_id", null: false
-  end
-
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "date"
@@ -28,6 +23,11 @@ ActiveRecord::Schema.define(version: 20201105035325) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events_students", id: false, force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "event_id", null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -46,14 +46,12 @@ ActiveRecord::Schema.define(version: 20201105035325) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "email"
+    t.string "email", null: false
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "students", "users"

@@ -81,8 +81,9 @@
 
 
 <% else %>
-    <h1>Please login to continue!</h1>
+    <h1>Please sign-in to continue!</h1>
     <button class="btn btn-primary"><%= link_to "Login", '/login', method: :get%></button>
+    <button class="btn btn-primary"> <%= link_to "Sign Up", '/users/new', method: :get%> </button>
 <% end %>
 
 <style>

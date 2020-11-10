@@ -13,6 +13,32 @@ class StudentsController < ApplicationController
     end
   end
 
+  def add_event
+    cur_user = User.find params[:user]
+    cur_event = Event.find params[:event]
+
+    current_student = cur_user.student
+    current_student.event << cur_event
+    
+    respond_to do |format|
+      format.html { redirect_to events_url, notice: 'Event was successfully attended.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def remove_event
+    cur_user = User.find params[:user]
+    cur_event = Event.find params[:event]
+
+    current_student = cur_user.student
+    current_student.event.delete(cur_event)
+
+    respond_to do |format|
+      format.html { redirect_to events_url, notice: 'Event was successfully removed.' }
+      format.json { head :no_content }
+    end
+  end
+
   # GET /students/1
   # GET /students/1.json
   def show

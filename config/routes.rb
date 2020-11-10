@@ -18,11 +18,15 @@ Rails.application.routes.draw do
   end
   root 'sessions#welcome'
 
-  post "events/attach_to_student" => "events#attach_to_student"
-  post "events/detach_from_student" => "events#detach_from_student"
-
   resources :students
   resources :events
+
+  resources :students do
+    collection do
+         post :add_event
+         post :remove_event
+     end
+ end
 
   namespace :api do
     namespace :v1 do
