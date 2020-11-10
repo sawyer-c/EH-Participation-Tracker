@@ -59,4 +59,10 @@
 <div style="margin-top:10px;">
 </div>
 
-<%= link_to "Download CSV", students_path(format: "csv") %>
+<div>
+  <%= link_to "Download Student CSV", students_path(format: "csv", set: 1) %>
+</div>
+
+<div>
+  <%= link_to "Download Student Events CSV", students_path(format: "csv", set: 2) %>
+</div>

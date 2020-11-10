@@ -7,9 +7,17 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.page(params[:page])
-    respond_to do |format|
-      format.html
-      format.csv { send_data @students.to_csv }
+    if(params[:set] == "1") then
+      respond_to do |format|
+        format.html
+        format.csv { send_data @students.to_csv }
+      end
+    end
+    if(params[:set] == "2") then
+      respond_to do |format|
+        format.html
+        format.csv { send_data @students.to_csv2 }
+      end
     end
   end
 

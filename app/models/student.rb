@@ -20,6 +20,23 @@ class Student < ApplicationRecord
     end
   end
 
+  def self.to_csv2(options = {})
+    desired_columns = ["First Name", "Last Name", "Email", "UIN", "Events"]
+    CSV.generate(options) do |csv|
+      # header columns
+      csv << desired_columns
+      # data columns
+      all.each do |student|
+        events = ""
+        student.event.each do |event|
+          events+= event.name 
+          events+= "\n"
+        end
+        csv << [student.firstName, student.lastName, student.email, student.uin, events]
+      end
+    end
+  end 
+
   has_one :user, class_name: 'User'
   accepts_nested_attributes_for :user
 
