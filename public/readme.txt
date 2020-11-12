@@ -57,6 +57,18 @@ Additionally, admins can add students to the table following the "+ Add Student"
 
 Lastly, admins can import and export csv files to load students into the table
  or to download the current table.
+ 
+To import data, you will need a csv file with the following columns, in order 
+Column Name (data type/format)
+
+firstName (string)
+lastName (string)
+email (string)
+uin (9-digit integer)
+year (4-digit integer)
+major (string)
+gpa (floating point, up to 4.000)
+status (string, either "Good Standing" or "Bad Standing")
 
 
  Events
@@ -67,6 +79,15 @@ This page has the same actions as the students page for events.
 
 Admins are able to edit, view, delete, and add events in the same manner,
  as well as import and export csv files.
+ 
+To import data, you will need a csv file with the following columns, in order 
+Column Name (data type/format)
+
+name (string)
+date (integer, yyyy-mm-dd --:--:-- UTC)
+description (string)
+event_type (string)
+location (string)
 
 
 II. Features
