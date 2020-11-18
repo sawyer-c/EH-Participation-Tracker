@@ -73,3 +73,4 @@ gem 'kaminari'
 ruby '2.6.6'
 gem 'brakeman'
 gem 'simplecov', require: false, group: :test
+gem 'table_print'

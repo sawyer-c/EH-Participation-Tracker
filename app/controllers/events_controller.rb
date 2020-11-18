@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.page(params[:page])
+    @events = Event.all
     respond_to do |format|
       format.html
       format.csv { send_data @events.to_csv }

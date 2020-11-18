@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.page(params[:page])
+    @students = Student.all
     if(params[:set] == "1") then
       respond_to do |format|
         format.html
